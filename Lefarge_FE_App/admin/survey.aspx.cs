@@ -114,6 +114,8 @@ namespace Lefarge_FE_App
                     fu.Attributes.Add("capture", "camera");
                     fu.Attributes.Add("type", "file");
                     fu.Attributes.Add("capture", "camera");
+                    fu.Attributes.Add("w", "camera");
+                    fu.Width = 150;
                     cellUpload.Controls.Add(fu);
  
                     c.Text = heading;
