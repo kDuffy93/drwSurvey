@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Lefarge.Master.cs" Inherits="Lefarge_FE_App.Lefarge" %>
+
+<%@ Register Src="~/controls/defrib.ascx" TagPrefix="uc1" TagName="defrib" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+   <title>Lafarge Fixed Equipment Surveys</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="~/lafargeStyle.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+    
+	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   
+    
+</head>
+<body>
+   
+    <form data-role="page" runat="server">
+         
+  <nav class="nav navbar-default">
+       
+        <ul class="nav navbar-nav">
+            <li> <a href="/lafargeUser/default.aspx"> <asp:Image runat="server"  rel="external" ImageUrl="images/lafarge.jpg" PostBackUrl="~/default.aspx" AlternateText="Lafarge Home"/></a></li>
+            <asp:PlaceHolder runat="server" ID="plhPublic">
+            <li><a rel="external" href="register.aspx">Register</a></li>
+             <li><a rel="external" href="login.aspx">Log in</a></li></asp:PlaceHolder>
+
+            <asp:PlaceHolder runat="server" id="plhPrivate">
+            <li><a rel="external" href="/admin/startSurvey.aspx">Start Survey</a></li>
+            <li><a rel="external" href="/admin/plants.aspx">Plant</a></li>
+            <li><a rel="external" href="/admin/equipmentList.aspx">Equipment</a></li>
+            <li><a rel="external" href="/admin/categories.aspx">Categories</a></li>
+            <li><a rel="external" href="/admin/headings.aspx">Headings</a></li>
+            <li><a rel="external" href="/admin/questionList.aspx">Questions</a></li>
+            <li><a rel="external" href="/lafargeUser/startReport.aspx">Generate Reports</a></li>
+            <li><a rel="external" href="/admin/triggerError.aspx">Throw Non-404 Error For Testing</a></li>
+            <li><a rel="external" href="/lafargeUser/logout.aspx">Log out</a></li></asp:PlaceHolder>
+
+            <asp:PlaceHolder runat="server" ID="plhLafargeUser">
+                <li><a rel="external" href="/lafargeUser/logout.aspx">Log out</a></li>
+            <li><a rel="external" href="/lafargeUser/startReport.aspx">Generate Reports</a></li>
+            </asp:PlaceHolder>
+            </ul>
+    </nav>
+   
+    <div class="container">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+ 
+        </asp:ContentPlaceHolder>
+    </div>
+  
+    <footer class="alert alert-success">
+        @2015 - Lafarge Fixed Equipment Surveys - Built May 25, 2015 -  By: Kyle Duffy 
+    </footer>
+       
+        </form>
+      
+    <%--<script type="text/javascript">
+        $(document).ready(function () {
+            jQuery("a").filter(function () {
+                return this.innerHTML.indexOf("Delete") == 0;
+            }).click(function () {
+                return confirm("Are you sure you want to delete this record?");
+            });
+        });
+
+   </script>--%>
+       
+    </body>
+</html>
