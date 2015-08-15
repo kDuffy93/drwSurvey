@@ -115,7 +115,7 @@ namespace Lefarge_FE_App
                     div.TagName = "input";
                     div.Attributes["type"] = "file";
                     div.Attributes["capture"] = "camera";
-                    div.Attributes["multiple"] = "true";
+                    
                     div.Attributes["accept"] = "image/*";
 
 
