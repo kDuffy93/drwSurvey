@@ -126,7 +126,7 @@ namespace Lefarge_FE_App
                     r.Controls.Add(c);
                     r.Controls.Add(a1);
                     r.Controls.Add(a2);
-
+                     
                     r.Controls.Add(cellUpload);
                     tblSurvey.Controls.Add(r);
                     getHeadingsQuestions(selectedID);
