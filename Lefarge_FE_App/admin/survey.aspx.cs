@@ -106,7 +106,7 @@ namespace Lefarge_FE_App
                     var heading = neededHeadings[i];
                     TableHeaderCell c = new TableHeaderCell();
                     TableHeaderCell a1 = new TableHeaderCell();
-                    TableHeaderCell a2 = new TableHeaderCell();
+                    
 
                     TableHeaderCell cellUpload = new TableHeaderCell();
                     FileUpload fu = new FileUpload();
@@ -115,7 +115,7 @@ namespace Lefarge_FE_App
                     fu.Attributes.Add("type", "file");
                     fu.Attributes.Add("capture", "camera");
                     fu.Attributes.Add("w", "camera");
-                    fu.Width = 150;
+                    fu.Width = 400;
                     cellUpload.Controls.Add(fu);
  
                     c.Text = heading;
@@ -127,7 +127,7 @@ namespace Lefarge_FE_App
                     // c.ID = selectedID;
                     r.Controls.Add(c);
                     r.Controls.Add(a1);
-                    r.Controls.Add(a2);
+                   
                       
                     r.Controls.Add(cellUpload);
                     tblSurvey.Controls.Add(r);
