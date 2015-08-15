@@ -27,6 +27,7 @@
                 <asp:TableHeaderCell Width="75">Yes/No</asp:TableHeaderCell>
                 <asp:TableHeaderCell width="200">Describe Defeciency/defect</asp:TableHeaderCell>
                 <asp:TableHeaderCell width="200">Corrective Action Plan</asp:TableHeaderCell>
+                <asp:TableHeaderCell width="25">Upload Image</asp:TableHeaderCell>
             </asp:TableHeaderRow>
          </asp:Table>
     </div>

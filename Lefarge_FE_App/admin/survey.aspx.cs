@@ -214,13 +214,23 @@ namespace Lefarge_FE_App
                     txtAP.TextMode = TextBoxMode.MultiLine;
                     cellAP.Controls.Add(txtAP);
 
+                    TableCell cellUpload = new TableCell();
+                     FileUpload fu = new FileUpload();
+                    fu.Attributes.Add("capture", "camera");
+                    fu.Attributes.Add("type", "file");
+                    fu.Attributes.Add("capture", "camera");
+                    cellUpload.Controls.Add(fu);
 
+                    
+                    
+                   
 
+                      
                     r.Controls.Add(cellQuestion);
                     r.Controls.Add(cellResponse);
                     r.Controls.Add(cellDeficency);
                     r.Controls.Add(cellAP);
-
+                    r.Controls.Add(cellUpload);
                     tblSurvey.Controls.Add(r);
                 }
             }
