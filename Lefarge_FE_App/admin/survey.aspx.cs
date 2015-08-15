@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Lefarge_FE_App.Models;
-
+using System.Web.UI.HtmlControls;
 namespace Lefarge_FE_App
 {
 
@@ -109,15 +109,19 @@ namespace Lefarge_FE_App
                     
 
                     TableHeaderCell cellUpload = new TableHeaderCell();
-                    FileUpload fu = new FileUpload();
-                    fu.AllowMultiple = true;
-                    fu.Attributes.Add("capture", "camera");
-                    fu.Attributes.Add("type", "file");
-                    fu.Attributes.Add("capture", "camera");
-                    fu.Attributes.Add("w", "camera");
-                    fu.Width = 400;
-                    cellUpload.Controls.Add(fu);
- 
+
+                    HtmlGenericControl div = new HtmlGenericControl();
+                    
+                    div.TagName = "input";
+                    div.Attributes["type"] = "file";
+                    div.Attributes["capture"] = "camera";
+                    div.Attributes["multiple"] = "true";
+                    div.Attributes["accept"] = "image/*";
+
+
+                    cellUpload.Controls.Add(div);
+
+                    
                     c.Text = heading;
                     c.ID = "heading" + i;
                     var allIDs = (from headings in conn.Headings
