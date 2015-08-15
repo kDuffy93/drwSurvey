@@ -107,7 +107,14 @@ namespace Lefarge_FE_App
                     TableHeaderCell c = new TableHeaderCell();
                     TableHeaderCell a1 = new TableHeaderCell();
                     TableHeaderCell a2 = new TableHeaderCell();
-                    TableHeaderCell a3 = new TableHeaderCell();
+
+                    TableHeaderCell cellUpload = new TableHeaderCell();
+                    FileUpload fu = new FileUpload();
+                    fu.AllowMultiple = true;
+                    fu.Attributes.Add("capture", "camera");
+                    fu.Attributes.Add("type", "file");
+                    fu.Attributes.Add("capture", "camera");
+                    cellUpload.Controls.Add(fu);
  
                     c.Text = heading;
                     c.ID = "heading" + i;
@@ -119,8 +126,8 @@ namespace Lefarge_FE_App
                     r.Controls.Add(c);
                     r.Controls.Add(a1);
                     r.Controls.Add(a2);
-                    r.Controls.Add(a3);
 
+                    r.Controls.Add(cellUpload);
                     tblSurvey.Controls.Add(r);
                     getHeadingsQuestions(selectedID);
                     if (i + 1 == neededHeadings.Count)
@@ -216,6 +223,7 @@ namespace Lefarge_FE_App
 
                     TableCell cellUpload = new TableCell();
                      FileUpload fu = new FileUpload();
+                     fu.AllowMultiple = true;
                     fu.Attributes.Add("capture", "camera");
                     fu.Attributes.Add("type", "file");
                     fu.Attributes.Add("capture", "camera");
@@ -230,7 +238,7 @@ namespace Lefarge_FE_App
                     r.Controls.Add(cellResponse);
                     r.Controls.Add(cellDeficency);
                     r.Controls.Add(cellAP);
-                    r.Controls.Add(cellUpload);
+                      
                     tblSurvey.Controls.Add(r);
                 }
             }
