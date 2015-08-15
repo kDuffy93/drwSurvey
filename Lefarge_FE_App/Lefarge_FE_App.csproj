@@ -171,8 +171,8 @@
     <Content Include="admin\startSurvey.aspx" />
     <Content Include="admin\selectEquipment.aspx" />
     <Content Include="admin\survey.aspx" />
-    <Content Include="admin\triggerError.aspx" />
     <Content Include="lafargeStyle.css" />
+    <Content Include="testCamera.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -437,12 +437,12 @@
     <Compile Include="admin\survey.aspx.designer.cs">
       <DependentUpon>survey.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\triggerError.aspx.cs">
-      <DependentUpon>triggerError.aspx</DependentUpon>
+    <Compile Include="testCamera.aspx.cs">
+      <DependentUpon>testCamera.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\triggerError.aspx.designer.cs">
-      <DependentUpon>triggerError.aspx</DependentUpon>
+    <Compile Include="testCamera.aspx.designer.cs">
+      <DependentUpon>testCamera.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,7 @@ namespace Lefarge_FE_App
 {
 
 
-    public partial class triggerError
+    public partial class testCamera
     {
     }
 }
