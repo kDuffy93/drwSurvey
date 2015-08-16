@@ -114,9 +114,10 @@ namespace Lefarge_FE_App
                     
                     div.TagName = "input";
                     div.Attributes["type"] = "file";
-            //        div.Attributes["capture"] = "camera";
-                    
-                  //  div.Attributes["accept"] = "image/*";
+                   div.Attributes["capture"] = "camera";
+                   div.Attributes["width"] = "250";
+                   div.Attributes["multiple"] = "true";
+                    div.Attributes["accept"] = "image/*";
 
 
                     cellUpload.Controls.Add(div);
