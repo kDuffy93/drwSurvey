@@ -195,7 +195,7 @@ namespace Lefarge_FE_App
                         ListItem answer = new ListItem();
                         if (w == 0)
                         {
-                            answer.Attributes.Add("width", "25");
+                            answer.Attributes.Add("width", "20");
 
                             answer.Text = ("Yes");
                             answer.Value = ("true");
