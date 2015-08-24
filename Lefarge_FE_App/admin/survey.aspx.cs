@@ -8,6 +8,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Lefarge_FE_App.Models;
 using System.Web.UI.HtmlControls;
+
+using System.IO;
+
+
 namespace Lefarge_FE_App
 {
 
@@ -109,22 +113,24 @@ namespace Lefarge_FE_App
                     
 
                     TableHeaderCell cellUpload = new TableHeaderCell();
-
+                    cellUpload.Width = 280;
                     HtmlGenericControl div = new HtmlGenericControl();
                     
                     div.TagName = "input";
                     div.Attributes["type"] = "file";
                    div.Attributes["capture"] = "camera";
-                   div.Attributes["width"] = "250";
+                   div.Attributes["width"] = "300";
                    div.Attributes["multiple"] = "true";
                     div.Attributes["accept"] = "image/*";
 
 
                     cellUpload.Controls.Add(div);
+                    cellUpload.ID = "upload" + i;
 
                     
                     c.Text = heading;
                     c.ID = "heading" + i;
+                   
                     var allIDs = (from headings in conn.Headings
                                   where headings.Categories_Under.Contains(SelectedCategory)
                                   select headings.Heading_ID).ToList();
@@ -195,7 +201,6 @@ namespace Lefarge_FE_App
                         ListItem answer = new ListItem();
                         if (w == 0)
                         {
-                            answer.Attributes.Add("width", "20");
 
                             answer.Text = ("Yes");
                             answer.Value = ("true");
@@ -205,7 +210,6 @@ namespace Lefarge_FE_App
                         {
                             answer.Text = ("No");
                             answer.Value = ("false");
-                            answer.Attributes.Add("width", "25");
 
                         }
                         resp.Items.Add(answer);
@@ -247,7 +251,8 @@ namespace Lefarge_FE_App
                     r.Controls.Add(cellResponse);
                     r.Controls.Add(cellDeficency);
                     r.Controls.Add(cellAP);
-                      
+                    r.Controls.Add(cellUpload);
+
                     tblSurvey.Controls.Add(r);
                 }
             }
@@ -296,19 +301,63 @@ namespace Lefarge_FE_App
             {
                 if (workingRow.GetType() == typeof(TableHeaderRow))
                 {
-                    continue;
+                    var currentHeading = "";
+                    foreach (TableCell currentCell in workingRow.Cells)
+                    {
+                        if(currentCell == workingRow.Cells[0])
+                        {
+                            TableHeaderCell c = (TableHeaderCell)currentCell;
+                             currentHeading = c.Text;
+                        }
+                        if (currentCell == workingRow.Cells[2])
+                        {
+
+                            foreach (Control control in currentCell.Controls)
+                            {
+                                var gg = control.GetType();
+                                if (control.GetType() == typeof(HttpFileCollection))
+                                {
+                                    FileUpload selectedUpload = (FileUpload)control;
+                                    IList<HttpPostedFile> collection = selectedUpload.PostedFiles;
+                                    int numOfPhotos = collection.Count();
+                                    foreach (HttpPostedFile i in collection)
+                                    {
+                                        string imgName = i.FileName.ToString();
+                                        string imgPath = "images/surveyImages" + imgName;
+                                        i.SaveAs(Server.MapPath(imgPath));
+                            using (DefaultConnectionEF conn = new DefaultConnectionEF())
+                           {
+                                Picture p = new Picture();
+                                p.date = dateAndTime;
+                                p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
+                             p.heading_ID = Convert.ToInt32(from c in conn.Headings
+                                                    where currentHeading == c.Heading1
+                                                    select c.Heading_ID);
+                                 
+                                p.URL = imgPath;
+                                p.name = imgName;
+
+                                conn.Pictures.Add(p);
+                                conn.SaveChanges();
+                            }
+                      
+                                    }
+                            }
+                        }
+                    }
+                }
                 }
                 else
                 {
                     using (DefaultConnectionEF conn = new DefaultConnectionEF())
                     {
                         Result r = new Result();
-                        
+
                         // set date completed
                         r.Date_Completed = dateAndTime;
                         //save white equipment it is
-                        
-                        r.Equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()); ;
+
+                        r.Equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
                         foreach (TableCell currentCell in workingRow.Cells)
                         {
                             if (currentCell == workingRow.Cells[0])
@@ -320,14 +369,14 @@ namespace Lefarge_FE_App
                                     indexOfUnderscore = t.ID.IndexOf("_");
                                     if (indexOfUnderscore == -1)
                                     {
-                                        continue;
+                                       
                                     }
                                 }
                                 catch (NullReferenceException)
                                 {
                                     continue;
                                 }
-                                                                int indexOfNumSign = t.ID.IndexOf("=") + 1;
+                                int indexOfNumSign = t.ID.IndexOf("=") + 1;
                                 // set question ID
                                 r.Question_ID = Convert.ToInt32(t.ID.Substring(0, indexOfUnderscore));
                                 //set heading id
@@ -376,6 +425,21 @@ namespace Lefarge_FE_App
         protected void btnTimeout_Click(object sender, EventArgs e)
         {
             
+        }
+
+     
+      
+
+        protected void btnUpload_Click1(object sender, EventArgs e)
+        {
+            if (fuMain.HasFile)
+            {
+                string FileName = Path.GetFileName(fuMain.PostedFile.FileName + "eqID=" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()));
+                //Save files to images folder
+                fuMain.SaveAs(Server.MapPath("/Images/" + FileName));
+                imgMain.ImageUrl = "Images/" + FileName;
+                imgMain.Visible = true;
+            }
         } // btn submit click close
     } // partial class close
 } //namespace close 

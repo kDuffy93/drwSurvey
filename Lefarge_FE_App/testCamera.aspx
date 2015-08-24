@@ -53,8 +53,8 @@
  </script>
 
     <div data-role="content"> 
- <button data-theme="d" onclick="capturePhoto();">Capture Photo</button> <br>
- <img style="display:none;width:100%;" id="largeImage" src="" /> <br> 
+ <button data-theme="d" onclick="capturePhoto();">Capture Photo</button> <br/>
+ <img style="display:none;width:100%;" id="largeImage" /> <br/> 
 </div> 
     <input type="file" multiple="multiple" capture="camera" accept="image/" id="takePictureField" />
 </asp:Content>

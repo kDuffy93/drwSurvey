@@ -39,10 +39,7 @@ fillDropDowns();
                          select cat).ToList();
                 //set the datasource to the created list and bind it to the dropdown
                 ddlCategory.DataSource = c;
-                ddlCategory.DataBind();
-          
-
-                
+                ddlCategory.DataBind();    
             }
         }
 

@@ -3,7 +3,8 @@
     <div id="pnlRefresh">
 
     </div>
-    <div class="well">
+    <div class="well" style="width:768px; height:275px;">
+        <div style="float:left">
         <div>
         <asp:Label runat="server">Selected Plant:</asp:Label>
         <asp:TextBox ID="txtPlant" runat="server" Enabled="false" Text="0"></asp:TextBox>
@@ -16,6 +17,12 @@
         <asp:Label runat="server">selected piece of equipment:</asp:Label>
         <asp:TextBox ID="txtEquipment" runat="server" Enabled="false" Text="0"></asp:TextBox>
             </div> 
+            </div>
+        <div style="float:right">
+            <asp:Image ID="imgMain" runat="server"  Visible="false" Width="200" Height="200"/>
+           <asp:FileUpload runat="server" ID="fuMain" Enabled="true" />
+            <asp:Button runat="server" ID="btnUpload"  OnClick="btnUpload_Click1" />
+        </div>
       
         </div> 
      <asp:Button runat="server" Visible="false" text="Start a new survey" ID="btnNewSurvey" OnClick="btnNewSurvey_Click" CssClass="btn btn-primary"/>
@@ -27,7 +34,7 @@
                 <asp:TableHeaderCell Width="5">Yes/No</asp:TableHeaderCell>
                 <asp:TableHeaderCell width="200">Describe Defeciency/defect</asp:TableHeaderCell>
                 <asp:TableHeaderCell width="200">Corrective Action Plan</asp:TableHeaderCell>
-                
+                <asp:TableHeaderCell width="300">Upload Images</asp:TableHeaderCell>
             </asp:TableHeaderRow>
          </asp:Table>
     </div>
