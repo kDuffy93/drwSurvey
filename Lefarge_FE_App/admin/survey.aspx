@@ -1,9 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Lefarge.Master" AutoEventWireup="true" CodeBehind="survey.aspx.cs" Inherits="Lefarge_FE_App.survey1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="/lafargeStyle.css" rel="stylesheet" />
     <div id="pnlRefresh">
 
     </div>
-    <div class="well" style="width:768px; height:275px;">
+    <div class="fixed-div" style="height:100px; width:100px;" >
+        
+    
+        
+        
+  
+      
+        <asp:ImageButton ID="ImageButton3" runat="server" Height="92px" ImageAlign="Middle" ImageUrl="~/images/captureImage.png" Width="96px" />
+        
+    
+        
+        
+  
+      
+    </div>
+    <div class="well" style="width:768px; height:300px;">
         <div style="float:left">
         <div>
         <asp:Label runat="server">Selected Plant:</asp:Label>

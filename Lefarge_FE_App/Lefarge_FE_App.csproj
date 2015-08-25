@@ -119,6 +119,7 @@
     <Content Include="404.aspx" />
     <Content Include="admin\categories.aspx" />
     <Content Include="admin\category.aspx" />
+    <Content Include="images\captureImage.png" />
     <Content Include="lafargeUser\report.aspx" />
     <Content Include="assignUR.aspx" />
     <Content Include="controls\defrib.ascx" />

@@ -434,12 +434,22 @@ namespace Lefarge_FE_App
         {
             if (fuMain.HasFile)
             {
-                string FileName = Path.GetFileName(fuMain.PostedFile.FileName + "eqID=" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()));
+                string FileName = Path.GetFileName("eqID=" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + fuMain.PostedFile.FileName);
                 //Save files to images folder
                 fuMain.SaveAs(Server.MapPath("/Images/" + FileName));
-                imgMain.ImageUrl = "Images/" + FileName;
+                imgMain.ImageUrl = "~/Images/" + FileName;
                 imgMain.Visible = true;
             }
+        }
+
+        protected void takePicture_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void captureImage_Click(object sender, ImageClickEventArgs e)
+        {
+
         } // btn submit click close
     } // partial class close
 } //namespace close 

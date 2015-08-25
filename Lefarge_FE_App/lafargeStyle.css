@@ -24,3 +24,11 @@
      border-width:0px;
      
 }
+.table-striped {
+}
+.fixed-div{
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+  
+}
