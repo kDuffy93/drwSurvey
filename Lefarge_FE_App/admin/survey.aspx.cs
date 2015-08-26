@@ -444,14 +444,10 @@ namespace Lefarge_FE_App
             }
         }
 
-        protected void takePicture_Click(object sender, EventArgs e)
-        {
+    
 
-        }
+    
 
-        protected void captureImage_Click(object sender, ImageClickEventArgs e)
-        {
-
-        } // btn submit click close
+       
     } // partial class close
 } //namespace close 
