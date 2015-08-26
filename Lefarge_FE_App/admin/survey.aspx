@@ -6,13 +6,17 @@
     </div>
     <div class="fixed-div" style="height:100px; width:250px;" > 
         
-        <asp:Button  runat="server"  data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" OnClientClick="openfileDialog();"  />
-        <asp:FileUpload runat="server" Visible="false" ID="hidenPic" capture="camera" />
-        <script>
-   function openfileDialog() {
-       $("#hidenPic").click();
-   }
+        <asp:Button  runat="server"  data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" OnClientClick="selectFile(); return false;" Width="249px"  />
+        <asp:FileUpload runat="server" Visible="false" capture="camera" />
+        
+       <script type="text/javascript" >
+           
+           function selectFile() {
+               $('input[type=file]').click();
+               return;
+           }
 </script>
+
     </div>
     <div class="well" style="width:768px; height:300px;">
         <div style="float:left">
