@@ -13,13 +13,13 @@ namespace Lefarge_FE_App {
     public partial class survey1 {
         
         /// <summary>
-        /// ImageButton3 control.
+        /// input2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
+        protected global::System.Web.UI.WebControls.Button input2;
         
         /// <summary>
         /// txtPlant control.

@@ -439,6 +439,8 @@ namespace Lefarge_FE_App
                 fuMain.SaveAs(Server.MapPath("/Images/" + FileName));
                 imgMain.ImageUrl = "~/Images/" + FileName;
                 imgMain.Visible = true;
+                btnUpload.Visible = false;
+                fuMain.Visible = false;
             }
         }
 

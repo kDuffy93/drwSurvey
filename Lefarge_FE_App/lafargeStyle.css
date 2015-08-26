@@ -28,7 +28,28 @@
 }
 .fixed-div{
     position: fixed;
-    bottom: 2em;
-    right: 2em;
+    bottom: 1em;
+    right: 1em;
   
+}
+.ui-icon{
+    vertical-align:top;
+}
+
+.ui-icon-cameraButton {
+    background-image: url(images/captureImage.png);
+    
+    height: 60px;
+    width: 65px;
+    
+
+}
+.button{
+    background-size: 75px;
+    font-size: 5px;
+    background-position: top left;
+}
+.ui-btn-text{
+    font-size:20px;
+    float:right;
 }

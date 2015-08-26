@@ -4,20 +4,9 @@
     <div id="pnlRefresh">
 
     </div>
-    <div class="fixed-div" style="height:100px; width:100px;" >
+    <div class="fixed-div" style="height:100px; width:250px;" > 
         
-    
-        
-        
-  
-      
-        <asp:ImageButton ID="ImageButton3" runat="server" Height="92px" ImageAlign="Middle" ImageUrl="~/images/captureImage.png" Width="96px" />
-        
-    
-        
-        
-  
-      
+        <asp:Button runat="server"  data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" />
     </div>
     <div class="well" style="width:768px; height:300px;">
         <div style="float:left">
@@ -37,7 +26,7 @@
         <div style="float:right">
             <asp:Image ID="imgMain" runat="server"  Visible="false" Width="200" Height="200"/>
            <asp:FileUpload runat="server" ID="fuMain" Enabled="true" />
-            <asp:Button runat="server" ID="btnUpload"  OnClick="btnUpload_Click1" />
+            <asp:Button runat="server" ID="btnUpload" text="Upload image"  OnClick="btnUpload_Click1" />
         </div>
       
         </div> 
