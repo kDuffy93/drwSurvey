@@ -7,7 +7,7 @@
     <div class="fixed-div" style="height:100px; width:250px;" > 
         
         <asp:Button  runat="server"  data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" OnClientClick="selectFile(); return false;" Width="249px"  />
-        <asp:FileUpload runat="server" Visible="false" capture="camera" />
+        <asp:FileUpload runat="server" Visible="false" capture="camera" AllowMultiple="false" />
         
        <script type="text/javascript" >
            
