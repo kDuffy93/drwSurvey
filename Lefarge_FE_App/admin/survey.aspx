@@ -7,13 +7,12 @@
     <div class="fixed-div" style="height:100px; width:250px;" > 
         
         <asp:Button  runat="server"  data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" OnClientClick="selectFile(); return false;" Width="249px"  />
-        <asp:FileUpload runat="server" Visible="false" capture="camera" AllowMultiple="false" />
+        <asp:FileUpload runat="server"  ID="hidenPic" capture="camera" />
         
        <script type="text/javascript" >
            
            function selectFile() {
-               $('input[type=file]').click();
-               return;
+               $('#hidenPic').click();
            }
 </script>
 
