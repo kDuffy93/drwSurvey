@@ -116,7 +116,7 @@ namespace Lefarge_FE_App.admin
                                        where h.Heading_ID == hID
                                        select h).FirstOrDefault();
 
-                    dr.Cells[4].Text = tempHeading.Heading1;
+                    dr.Cells[4].Controls.Add(new LiteralControl("<a href=\"#\">"+ tempHeading.Heading1.ToString() + "</a>")); 
 
                     var response = dr.Cells[1].Text;
 

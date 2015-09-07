@@ -304,53 +304,66 @@ namespace Lefarge_FE_App
                     var currentHeading = "";
                     foreach (TableCell currentCell in workingRow.Cells)
                     {
-                        if(currentCell == workingRow.Cells[0])
+                        if (currentCell == workingRow.Cells[0])
                         {
                             TableHeaderCell c = (TableHeaderCell)currentCell;
-                             currentHeading = c.Text;
+                            currentHeading = c.Text;
                         }
-                        if (currentCell == workingRow.Cells[2])
-                        {
-
+                       
+                           
                             foreach (Control control in currentCell.Controls)
                             {
-                                var gg = control.GetType();
-                                if (control.GetType() == typeof(HttpFileCollection))
+                                if (control.GetType() == typeof(FileUpload))
                                 {
-                                    FileUpload selectedUpload = (FileUpload)control;
-                                    IList<HttpPostedFile> collection = selectedUpload.PostedFiles;
-                                    int numOfPhotos = collection.Count();
-                                    foreach (HttpPostedFile i in collection)
+                                    FileUpload fu = (FileUpload)control;
+                                    if (fu.HasFile == true)
                                     {
-                                        string imgName = i.FileName.ToString();
-                                        string imgPath = "images/surveyImages" + imgName;
-                                        i.SaveAs(Server.MapPath(imgPath));
-                            using (DefaultConnectionEF conn = new DefaultConnectionEF())
-                           {
-                                Picture p = new Picture();
-                                p.date = dateAndTime;
-                                p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
-                             p.heading_ID = Convert.ToInt32(from c in conn.Headings
-                                                    where currentHeading == c.Heading1
-                                                    select c.Heading_ID);
-                                 
-                                p.URL = imgPath;
-                                p.name = imgName;
+                                        IList<HttpPostedFile> collection = fu.PostedFiles;
+                                        var numOfPics = collection.Count;
+                                        for (int i = 1; i > numOfPics; i++)
+                                        {
+                                            foreach (HttpPostedFile ia in collection)
+                                            {
+                                                TableCell t = (TableCell)currentCell;
+                                                 int indexOfNumSign = t.ID.IndexOf("=") + 1;
 
-                                conn.Pictures.Add(p);
-                                conn.SaveChanges();
-                            }
-                      
+                                                string imgName = ia.FileName.ToString();
+                                                string imgPath = "images/surveyImages" + "eqid=" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "headingID#" + Convert.ToInt32(t.ID.Substring(indexOfNumSign)) +imgName;
+                                                ia.SaveAs(Server.MapPath(imgPath));
+                                                using (DefaultConnectionEF conn = new DefaultConnectionEF())
+                                                {
+                                                    Picture p = new Picture();
+                                                    p.date = dateAndTime;
+                                                    p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
+                                                    p.heading_ID = Convert.ToInt32(from c in conn.Headings
+                                                                                   where currentHeading == c.Heading1
+                                                                                   select c.Heading_ID);
+
+                                                    p.URL = imgPath;
+                                                    p.name = imgName;
+
+                                                    conn.Pictures.Add(p);
+                                                    
+                                                }
+
+                                            }
+                                        }
                                     }
+
+                                }
                             }
-                        }
+                        
+                        
                     }
-                }
                 }
                 else
                 {
                     using (DefaultConnectionEF conn = new DefaultConnectionEF())
                     {
+                        var currentHeadingID = 0;
+                        var currentQuestionID = 0;
+
+
                         Result r = new Result();
 
                         // set date completed
@@ -369,7 +382,7 @@ namespace Lefarge_FE_App
                                     indexOfUnderscore = t.ID.IndexOf("_");
                                     if (indexOfUnderscore == -1)
                                     {
-                                       
+
                                     }
                                 }
                                 catch (NullReferenceException)
@@ -379,8 +392,11 @@ namespace Lefarge_FE_App
                                 int indexOfNumSign = t.ID.IndexOf("=") + 1;
                                 // set question ID
                                 r.Question_ID = Convert.ToInt32(t.ID.Substring(0, indexOfUnderscore));
+                                currentQuestionID = Convert.ToInt32(t.ID.Substring(0, indexOfUnderscore));
                                 //set heading id
                                 r.heading_ID = Convert.ToInt32(t.ID.Substring(indexOfNumSign));
+                                currentHeadingID = Convert.ToInt32(t.ID.Substring(indexOfNumSign));
+
                             }
                             foreach (Control control in currentCell.Controls)
                             {
@@ -407,15 +423,50 @@ namespace Lefarge_FE_App
                                     {
                                         r.Action_plan = txt.Text;
                                     } //checks if txtbox is action plan
-                                } //checks for txtbox
-                            }
-                        } //foreach control
-                        conn.Results.Add(r);
-                        conn.SaveChanges();
-                    } // checks to see if workign row is not a header row
-                } //default conn
-            } //for each table row
-            btnNewSurvey.Visible = true;
+                                }//checks for txtbox
+
+                                if (control.GetType() == typeof(FileUpload))
+                                {
+                                    FileUpload fu = (FileUpload)control;
+                                    if (fu.HasFile == true)
+                                    {
+                                        IList<HttpPostedFile> collection = fu.PostedFiles;
+                                        var numOfPics = collection.Count;
+                                        for (int i = 0; i < numOfPics; i++)
+                                        {
+                                            foreach (HttpPostedFile ia in collection)
+                                            {
+                                                string imgName = ia.FileName.ToString();
+                                                string imgPath = ("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID +"dc^"+r.Date_Completed + imgName);
+                                                ia.SaveAs(Server.MapPath("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID +  imgName));
+                                                
+                                                    Picture p = new Picture();
+                                                
+                                                    p.date = dateAndTime;
+                                                    p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
+                                                    p.heading_ID = currentHeadingID;
+                                                    p.question_ID = currentQuestionID;
+                                                    p.URL = imgPath;
+                                                    p.name = imgName;
+                                                    
+                                                    conn.Pictures.Add(p);
+                                                    
+                                                
+
+                                            }
+                                        }
+
+                                    }
+                                }// if file upload = true
+
+                            } //foreach control
+                            conn.Results.Add(r);
+                            conn.SaveChanges();
+                        } // checks to see if workign row is not a header row
+                    } //default conn
+                } //for each table row
+                btnNewSurvey.Visible = true;
+            }
         }
         protected void btnNewSurvey_Click(object sender, EventArgs e)
         {
@@ -446,8 +497,8 @@ namespace Lefarge_FE_App
 
     
 
-    
+
 
        
     } // partial class close
-} //namespace close 
+}//namespace close 

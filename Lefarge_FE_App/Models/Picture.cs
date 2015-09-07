@@ -30,6 +30,8 @@ public partial class Picture
 
     public string name { get; set; }
 
+    public Nullable<int> question_ID { get; set; }
+
 }
 
 }
