@@ -6,13 +6,13 @@
     </div>
     <div class="fixed-div" style="height:100px; width:250px;" > 
         
-        <asp:Button  runat="server"  data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" OnClientClick="selectFile(); return false;" Width="249px"  />
+        <asp:Button  runat="server" visible="false" data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" OnClientClick="selectFile(); return false;" Width="249px"  />
         <asp:FileUpload runat="server"  CssClass="hiddenUpload" ID="hidenPic" capture="camera" />
-        
+         
        <script type="text/javascript" >
            var fileUploadID = '<%= hidenPic.ClientID %>';
            $("#button").click(function () {
-               $(':input[type="file"]').show().click().hide();
+               $(':input[type="file"]').click();
            })
           
 </script>
