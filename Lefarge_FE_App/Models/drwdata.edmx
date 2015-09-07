@@ -109,11 +109,8 @@
           <Property Name="Categories_Under" Type="varchar(max)" />
           <Property Name="Category_ID" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'drwdata.dbo.Pictures' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Pictures">
           <Key>
-            
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="URL" Type="varchar" MaxLength="200" />
@@ -323,22 +320,12 @@ warning 6002: The table/view 'drwdata.dbo.Pictures' does not have a primary key 
           <EntitySet Name="Deficiencies" EntityType="Self.Deficiencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Headings" EntityType="Self.Headings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pictures" EntityType="Self.Pictures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plants" EntityType="Self.Plants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Potential_Action_Plans" EntityType="Self.Potential_Action_Plans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Potential_Deficiencies" EntityType="Self.Potential_Deficiencies" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pictures" EntityType="Self.Pictures" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Pictures].[URL] AS [URL], 
-    [Pictures].[date] AS [date], 
-    [Pictures].[heading_ID] AS [heading_ID], 
-    [Pictures].[equipment_ID] AS [equipment_ID], 
-    [Pictures].[name] AS [name], 
-    [Pictures].[question_ID] AS [question_ID], 
-    [Pictures].[ID] AS [ID]
-    FROM [dbo].[Pictures] AS [Pictures]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
