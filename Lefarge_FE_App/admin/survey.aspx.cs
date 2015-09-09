@@ -55,6 +55,7 @@ namespace Lefarge_FE_App
             {
                 tblSurvey = (Table)Session["surveyTable"];
             }
+            input2.Attributes.Add("onclick", "document.getElementById('" + hidenPic.ClientID + "').click(); return false;"); 
 
         }
 
