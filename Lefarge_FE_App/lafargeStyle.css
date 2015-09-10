@@ -54,8 +54,5 @@
     float:right;
 }
 .hiddenUpload{
-    position:absolute;
-    top:-10000px;
-  left:-10000px;
   display:none;
 }

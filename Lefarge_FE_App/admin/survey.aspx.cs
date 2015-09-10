@@ -212,7 +212,7 @@ namespace Lefarge_FE_App
                             answer.Text = ("No");
                             answer.Value = ("false");
 
-                        }
+                        }      
                         resp.Items.Add(answer);
                     }
 
@@ -331,19 +331,20 @@ namespace Lefarge_FE_App
                                                 string imgName = ia.FileName.ToString();
                                                 string imgPath = "images/surveyImages" + "eqid=" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "headingID#" + Convert.ToInt32(t.ID.Substring(indexOfNumSign)) +imgName;
                                                 ia.SaveAs(Server.MapPath(imgPath));
-                                                using (DefaultConnectionEF conn = new DefaultConnectionEF())
+                                                using (DefaultConnectionEF conn1 = new DefaultConnectionEF())
                                                 {
                                                     Picture p = new Picture();
                                                     p.date = dateAndTime;
                                                     p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
-                                                    p.heading_ID = Convert.ToInt32(from c in conn.Headings
+                                                    p.heading_ID = Convert.ToInt32(from c in conn1.Headings
                                                                                    where currentHeading == c.Heading1
                                                                                    select c.Heading_ID);
 
                                                     p.URL = imgPath;
                                                     p.name = imgName;
 
-                                                    conn.Pictures.Add(p);
+                                                    conn1.Pictures.Add(p);
+                                                    conn1.SaveChanges();
                                                     
                                                 }
 
