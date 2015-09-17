@@ -524,8 +524,8 @@ namespace Lefarge_FE_App
                         string imgPath = ("/images/surveyImages/mainPics/" +
                             "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_"+date1 +imgName);
                         
-                        ia.SaveAs(Server.MapPath(("/images/surveyImages/mainPics/" +
-                            "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1 + imgName)));
+                       // ia.SaveAs(Server.MapPath(("/images/surveyImages/mainPics/" +
+                      //      "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1 + imgName)));
                         p.date = DateTime.Now;
                         p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
 
