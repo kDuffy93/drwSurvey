@@ -113,13 +113,13 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="URL" Type="varchar" MaxLength="200" />
           <Property Name="date" Type="date" Nullable="false" />
           <Property Name="heading_ID" Type="int" />
           <Property Name="equipment_ID" Type="int" />
           <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="question_ID" Type="int" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="photo" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Plants">
           <Key>
@@ -486,12 +486,12 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="heading_ID" Type="Int32" />
           <Property Name="equipment_ID" Type="Int32" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="question_ID" Type="Int32" />
+          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Plant">
           <Key>
@@ -826,10 +826,10 @@
           <EntitySetMapping Name="Pictures">
             <EntityTypeMapping TypeName="drwdataModel.Picture">
               <MappingFragment StoreEntitySet="Pictures">
+                <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="question_ID" ColumnName="question_ID" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="heading_ID" ColumnName="heading_ID" />
                 <ScalarProperty Name="equipment_ID" ColumnName="equipment_ID" />

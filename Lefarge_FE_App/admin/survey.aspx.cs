@@ -115,17 +115,14 @@ namespace Lefarge_FE_App
 
                     TableHeaderCell cellUpload = new TableHeaderCell();
                     cellUpload.Width = 280;
-                    HtmlGenericControl div = new HtmlGenericControl();
-                    
-                    div.TagName = "input";
-                    div.Attributes["type"] = "file";
-                   div.Attributes["capture"] = "camera";
-                   div.Attributes["width"] = "300";
-                   div.Attributes["multiple"] = "true";
-                    div.Attributes["accept"] = "image/*";
 
+                    FileUpload fu = new FileUpload();
+                    fu.AllowMultiple = true;
+                    fu.Attributes.Add("capture", "camera");
+                    fu.Attributes.Add("type", "file");
+                    fu.Attributes.Add("capture", "camera");
+                    cellUpload.Controls.Add(fu);
 
-                    cellUpload.Controls.Add(div);
                     cellUpload.ID = "upload" + i;
 
                     
@@ -302,16 +299,23 @@ namespace Lefarge_FE_App
             {
                 if (workingRow.GetType() == typeof(TableHeaderRow))
                 {
-                    var currentHeading = "";
-                    foreach (TableCell currentCell in workingRow.Cells)
+                    using (DefaultConnectionEF conn = new DefaultConnectionEF())
                     {
-                        if (currentCell == workingRow.Cells[0])
+                        string currentHeading = "";
+                        int currentHeadingId = 0;
+                        foreach (TableCell currentCell in workingRow.Cells)
                         {
-                            TableHeaderCell c = (TableHeaderCell)currentCell;
-                            currentHeading = c.Text;
-                        }
-                       
-                           
+                            if (currentCell == workingRow.Cells[0])
+                            {
+                                TableHeaderCell c = (TableHeaderCell)currentCell;
+                                currentHeading = c.Text;
+                                currentHeadingId = (from h in conn.Headings
+                                                    where h.Heading1 == currentHeading
+                                                    select h.Heading_ID).FirstOrDefault();
+                               
+                            }
+
+
                             foreach (Control control in currentCell.Controls)
                             {
                                 if (control.GetType() == typeof(FileUpload))
@@ -320,42 +324,48 @@ namespace Lefarge_FE_App
                                     if (fu.HasFile == true)
                                     {
                                         IList<HttpPostedFile> collection = fu.PostedFiles;
-                                        var numOfPics = collection.Count;
-                                        for (int i = 1; i > numOfPics; i++)
+
+                                        foreach (HttpPostedFile ia in collection)
                                         {
-                                            foreach (HttpPostedFile ia in collection)
-                                            {
-                                                TableCell t = (TableCell)currentCell;
-                                                 int indexOfNumSign = t.ID.IndexOf("=") + 1;
 
-                                                string imgName = ia.FileName.ToString();
-                                                string imgPath = "images/surveyImages" + "eqid=" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "headingID#" + Convert.ToInt32(t.ID.Substring(indexOfNumSign)) +imgName;
-                                                ia.SaveAs(Server.MapPath(imgPath));
-                                                using (DefaultConnectionEF conn1 = new DefaultConnectionEF())
-                                                {
-                                                    Picture p = new Picture();
-                                                    p.date = dateAndTime;
-                                                    p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
-                                                    p.heading_ID = Convert.ToInt32(from c in conn1.Headings
-                                                                                   where currentHeading == c.Heading1
-                                                                                   select c.Heading_ID);
 
-                                                    p.URL = imgPath;
-                                                    p.name = imgName;
+                                            Picture p = new Picture();
+                                            var date = DateTime.Now.ToString();
+                                            string imgName = ia.FileName.ToString();
+                                            int imageLength = ia.ContentLength;
+                                            string imageType = ia.ContentType;
 
-                                                    conn1.Pictures.Add(p);
-                                                    conn1.SaveChanges();
-                                                    
-                                                }
+                                            var binaryImagedata = new byte[imageLength];
+                                            ia.InputStream.Read(binaryImagedata, 0, imageLength);
 
-                                            }
+                                            var date1 = DateTime.Now.ToString("MM.dd.yyyy HH.mm.ss");
+
+                                            string imgPath = ("/images/surveyImages/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1 + imgName);
+                                            ia.SaveAs(Server.MapPath(("/images/surveyImages/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1 + imgName)));
+
+                                            p.date = dateAndTime;
+                                            p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
+                                            p.heading_ID = currentHeadingId;
+
+                                            p.photo = binaryImagedata;
+                                            p.name = imgName;
+
+                                            conn.Pictures.Add(p);
+
+
                                         }
+
                                     }
 
-                                }
+
+
+                                }// fu
+
                             }
-                        
-                        
+
+
+                        }
+                        conn.SaveChanges();
                     }
                 }
                 else
@@ -367,6 +377,7 @@ namespace Lefarge_FE_App
 
 
                         Result r = new Result();
+
 
                         // set date completed
                         r.Date_Completed = dateAndTime;
@@ -426,37 +437,44 @@ namespace Lefarge_FE_App
                                         r.Action_plan = txt.Text;
                                     } //checks if txtbox is action plan
                                 }//checks for txtbox
-                                 
+
                                 if (control.GetType() == typeof(FileUpload))
                                 {
                                     FileUpload fu = (FileUpload)control;
                                     if (fu.HasFile == true)
                                     {
                                         IList<HttpPostedFile> collection = fu.PostedFiles;
-                                        var numOfPics = collection.Count;
-                                        for (int i = 0; i < numOfPics; i++)
+
+                                        foreach (HttpPostedFile ia in collection)
                                         {
-                                            foreach (HttpPostedFile ia in collection)
-                                            {
-                                                string imgName = ia.FileName.ToString();
-                                                string imgPath = ("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID +"dc^"+r.Date_Completed + imgName);
-                                                ia.SaveAs(Server.MapPath("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID +  imgName));
-                                                
-                                                    Picture p = new Picture();
-                                                
-                                                    p.date = dateAndTime;
-                                                    p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
-                                                    p.heading_ID = currentHeadingID;
-                                                    p.question_ID = currentQuestionID;
-                                                    p.URL = imgPath;
-                                                    p.name = imgName;
-                                                    
-                                                    conn.Pictures.Add(p);
-                                                    
+                                            Picture p = new Picture();
+                                            var date = DateTime.Now.ToString();
+                                            string imgName = ia.FileName.ToString();
+                                            int imageLength = ia.ContentLength;
+                                            string imageType = ia.ContentType;
+
+                                            var binaryImagedata = new byte[imageLength];
+                                            ia.InputStream.Read(binaryImagedata, 0, imageLength);
+                                            var date1 = DateTime.Now.ToString("MM.dd.yyyy HH.mm.ss");
+
+                                            string imgPath = ("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1 + imgName);
+                                            ia.SaveAs(Server.MapPath(("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1 + imgName)));
                                                 
 
-                                            }
+                                            p.date = dateAndTime;
+                                            p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
+                                            p.heading_ID = currentHeadingID;
+                                            p.question_ID = currentQuestionID;
+                                            p.photo = binaryImagedata;
+                                            p.name = imgName;
+
+
+                                            conn.Pictures.Add(p);
+
+
+
                                         }
+
 
                                     }
                                 }// if file upload = true
@@ -480,26 +498,62 @@ namespace Lefarge_FE_App
             
         }
 
-     
-      
+
+
 
         protected void btnUpload_Click1(object sender, EventArgs e)
         {
             if (fuMain.HasFile)
             {
-                string FileName = Path.GetFileName("eqID=" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + fuMain.PostedFile.FileName);
-                //Save files to images folder
-                fuMain.SaveAs(Server.MapPath("/Images/" + FileName));
-                imgMain.ImageUrl = "~/Images/" + FileName;
-                imgMain.Visible = true;
-                btnUpload.Visible = false;
-                fuMain.Visible = false;
+                using (DefaultConnectionEF conn = new DefaultConnectionEF())
+                {
+                    IList<HttpPostedFile> collection = fuMain.PostedFiles;
+
+                    foreach (HttpPostedFile ia in collection)
+                    {
+                        Picture p = new Picture();
+                        var date = DateTime.Now.ToString();
+                        string imgName = ia.FileName.ToString();
+                        int imageLength = ia.ContentLength;
+                        string imageType = ia.ContentType;
+
+                        var binaryImagedata = new byte[imageLength];
+                        ia.InputStream.Read(binaryImagedata, 0, imageLength);
+
+                        var date1 = DateTime.Now.ToString("MM.dd.yyyy HH.mm.ss");
+                        string imgPath = ("/images/surveyImages/mainPics/" +
+                            "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_"+date1 +imgName);
+                        
+                        ia.SaveAs(Server.MapPath(("/images/surveyImages/mainPics/" +
+                            "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1 + imgName)));
+                        p.date = DateTime.Now;
+                        p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
+
+
+                        p.photo = binaryImagedata;
+                        p.name = imgName;
+
+
+
+
+                        imgMain.ImageUrl = imgPath;
+                        conn.Pictures.Add(p);
+
+
+
+                    }
+                   
+                    imgMain.Visible = true;
+                    btnUpload.Visible = false;
+                    fuMain.Visible = false;
+                    conn.SaveChanges();
+                }
             }
         }
 
-    
 
 
+        
 
        
     } // partial class close

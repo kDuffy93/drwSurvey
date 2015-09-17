@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="/lafargeStyle.css" rel="stylesheet" />
     <div id="pnlRefresh">
-
+        
     </div>
     <div class="fixed-div" style="height:100px; width:250px;" > 
         
@@ -27,6 +27,7 @@
             </div>
         <div style="float:right">
             <asp:Image ID="imgMain" runat="server"  Visible="false" Width="200" Height="200"/>
+           
            <asp:FileUpload runat="server" ID="fuMain" Enabled="true" />
             <asp:Button runat="server" ID="btnUpload" text="Upload image"  OnClick="btnUpload_Click1" />
         </div>

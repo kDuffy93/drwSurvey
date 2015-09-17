@@ -115,8 +115,12 @@ namespace Lefarge_FE_App.admin
                     var tempHeading = (from h in conn.Headings
                                        where h.Heading_ID == hID
                                        select h).FirstOrDefault();
-
-                    dr.Cells[4].Controls.Add(new LiteralControl("<a href=\"#\">"+ tempHeading.Heading1.ToString() + "</a>")); 
+                    Button tempButton = new Button();
+                    tempButton.ID = "btnQid=" + qID + "Hid:" + hID;
+                    tempButton.Text = tempHeading.Heading1;
+                    tempButton.Attributes.Add("onClick", "btn2Click();");
+                    
+                    dr.Cells[4].Controls.Add(tempButton);
 
                     var response = dr.Cells[1].Text;
 
@@ -156,6 +160,7 @@ namespace Lefarge_FE_App.admin
                
               }*/
         }
+       
 
     }
 }

@@ -20,8 +20,6 @@ public partial class Picture
 
     public int ID { get; set; }
 
-    public string URL { get; set; }
-
     public System.DateTime date { get; set; }
 
     public Nullable<int> heading_ID { get; set; }
@@ -31,6 +29,8 @@ public partial class Picture
     public string name { get; set; }
 
     public Nullable<int> question_ID { get; set; }
+
+    public byte[] photo { get; set; }
 
 }
 
