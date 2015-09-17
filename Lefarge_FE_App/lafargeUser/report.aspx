@@ -3,6 +3,7 @@
 
 
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="well" style="height:200px">
@@ -43,7 +44,7 @@ This is what the window will look like where pictures are going to go. Im still 
     </div>
 </asp:Panel>
     <ajaxToolkit:ModalPopupExtender ID="mpe" runat="server" TargetControlId="Button2" 
- PopupControlID="Panel1" OkControlID="OKButton" />
+ PopupControlID="Panel1" OkControlID="OKButton"  RepositionMode="None"   PopupDragHandleControlID="panel1" Drag="true"/>
 
 
     <asp:DropDownList runat="server" ID="ddlDates" AutoPostBack="true"   OnSelectedIndexChanged="ddlDates_SelectedIndexChanged" OnDataBinding="ddlDates_DataBinding"></asp:DropDownList>

@@ -5,6 +5,12 @@
      text-shadow:none;
      font-weight: 700;
 }
+html, body
+{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 .table-striped > tbody > tr:nth-child(even) > td
  {
   background-color: #01B473;
