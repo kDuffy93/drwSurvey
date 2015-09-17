@@ -32,6 +32,8 @@ public partial class Picture
 
     public byte[] photo { get; set; }
 
+    public string URL { get; set; }
+
 }
 
 }

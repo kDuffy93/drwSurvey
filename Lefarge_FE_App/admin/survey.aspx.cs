@@ -338,12 +338,13 @@ namespace Lefarge_FE_App
                                             var binaryImagedata = new byte[imageLength];
                                             ia.InputStream.Read(binaryImagedata, 0, imageLength);
 
-                                            var date1 = DateTime.Now.ToString("MM.dd.yyyy HH.mm.ss");
+                                            var date1 = DateTime.Now;
+                                            var date1String = date1.ToString("MM.dd.yyyy HH.mm.ss");
 
-                                            string imgPath = ("/images/surveyImages/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1 + imgName);
-                                            ia.SaveAs(Server.MapPath(("/images/surveyImages/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1 + imgName)));
-
-                                            p.date = dateAndTime;
+                                            string imgPath = ("drwsurvey.azurewebsites.net/images/surveyImages/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
+                                            ia.SaveAs(Server.MapPath(("/images/surveyImages/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
+                                            p.URL = imgPath;
+                                            p.date = date1;
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
                                             p.heading_ID = currentHeadingId;
 
@@ -455,13 +456,13 @@ namespace Lefarge_FE_App
 
                                             var binaryImagedata = new byte[imageLength];
                                             ia.InputStream.Read(binaryImagedata, 0, imageLength);
-                                            var date1 = DateTime.Now.ToString("MM.dd.yyyy HH.mm.ss");
+                                            var date1 = DateTime.Now;
+                                            var date1String = date1.ToString("MM.dd.yyyy HH.mm.ss");
+                                            string imgPath = ("drwsurvey.azurewebsites.net/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName);
+                                            ia.SaveAs(Server.MapPath(("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName)));
 
-                                            string imgPath = ("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1 + imgName);
-                                            ia.SaveAs(Server.MapPath(("/images/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1 + imgName)));
-                                                
-
-                                            p.date = dateAndTime;
+                                            p.URL = imgPath;
+                                            p.date = date1;
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
                                             p.heading_ID = currentHeadingID;
                                             p.question_ID = currentQuestionID;
@@ -520,16 +521,19 @@ namespace Lefarge_FE_App
                         var binaryImagedata = new byte[imageLength];
                         ia.InputStream.Read(binaryImagedata, 0, imageLength);
 
-                        var date1 = DateTime.Now.ToString("MM.dd.yyyy HH.mm.ss");
-                        string imgPath = ("/images/surveyImages/mainPics/" +
-                            "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_"+date1 +imgName);
+                        var date1 = DateTime.Now;
+                        var date1String = date1.ToString("MM.dd.yyyy HH.mm.ss");
+
+                        string imgPath = ("drwsurvey.azurewebsites.net/images/surveyImages/mainPics/" +
+                            "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
                         
-                       // ia.SaveAs(Server.MapPath(("/images/surveyImages/mainPics/" +
-                      //      "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1 + imgName)));
-                        p.date = DateTime.Now;
+                       ia.SaveAs(Server.MapPath(("/images/surveyImages/mainPics/" +
+                             "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
+                       p.URL = imgPath;
+                        p.date = date1;
                         p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
 
-
+                        p.URL = imgPath;
                         p.photo = binaryImagedata;
                         p.name = imgName;
 
