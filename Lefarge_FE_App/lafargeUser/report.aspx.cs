@@ -118,7 +118,8 @@ namespace Lefarge_FE_App.admin
                     Button tempButton = new Button();
                     tempButton.ID = "btnQid=" + qID + "Hid:" + hID;
                     tempButton.Text = tempHeading.Heading1;
-                    tempButton.Attributes.Add("onClick", "btn2Click();");
+                    
+                   
                     
                     dr.Cells[4].Controls.Add(tempButton);
 

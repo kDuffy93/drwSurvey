@@ -20,16 +20,10 @@
                 <asp:Button ID="Button2" runat="server" Text="Click to view pop-up window" />
             </div>
        
+  
+
           
-              <script type="text/javascript">
-                function btn2Click() {
-                   
-
-                    document.getElementById('<%=Button2.ClientID%>').fireEvent("onclick");
-                }
-                
-
-   </script>
+             
            
         </div>
     </div>
@@ -44,7 +38,7 @@ This is what the window will look like where pictures are going to go. Im still 
     </div>
 </asp:Panel>
     <ajaxToolkit:ModalPopupExtender ID="mpe" runat="server" TargetControlId="Button2" 
- PopupControlID="Panel1" OkControlID="OKButton"  RepositionMode="None"   PopupDragHandleControlID="panel1" Drag="true"/>
+ PopupControlID="Panel1" OkControlID="OKButton"   PopupDragHandleControlID="panel1" Drag="true"/>
 
 
     <asp:DropDownList runat="server" ID="ddlDates" AutoPostBack="true"   OnSelectedIndexChanged="ddlDates_SelectedIndexChanged" OnDataBinding="ddlDates_DataBinding"></asp:DropDownList>
@@ -60,7 +54,8 @@ This is what the window will look like where pictures are going to go. Im still 
             <asp:BoundField DataField="Action_plan" HeaderText="Action Plan"/>
              <asp:BoundField DataField="heading_ID" HeaderText="For Heading" />
              <asp:BoundField DataField="Date_Completed" HeaderText="Date Completed"/>
-            <asp:ButtonField Text="View Images" />
+            <asp:ButtonField Text="View Images" ButtonType="Button" />
+
             
          
 
