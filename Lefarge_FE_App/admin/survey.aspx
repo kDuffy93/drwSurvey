@@ -6,8 +6,8 @@
     </div>
     <div class="fixed-div" style="height:100px; width:250px;" > 
         
-        <asp:Button  runat="server" visible="true" data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" Width="249px"  />
-        <asp:FileUpload runat="server"  CssClass="hiddenUpload" ID="hidenPic" capture="camera"  />
+        <asp:Button  runat="server" data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" Width="249px"  />
+        <asp:FileUpload runat="server" CssClass="hiddenUpload" ID="hidenPic" capture="camera" />
 
     </div>
     <div class="well" style="width:768px; height:300px;">
@@ -35,7 +35,7 @@
         </div> 
      <asp:Button runat="server" Visible="false" text="Start a new survey" ID="btnNewSurvey" OnClick="btnNewSurvey_Click" CssClass="btn btn-primary"/>
     <div id="srvMain">
-        <asp:Table id="tblSurvey"  CssClass="table table-striped" CellPadding="5" CellSpacing="5"
+        <asp:Table id="tblSurvey"  CssClass="table table-striped"  CellPadding="5" CellSpacing="5"
         Gridlines="both" runat="server" border-right-width="1" EnableViewState="true">
             <asp:TableHeaderRow runat="server">
                 <asp:TableHeaderCell width="175">Question</asp:TableHeaderCell>

@@ -61,6 +61,8 @@ html, body
 }
 .hiddenUpload{
   display:none;
+  
+  right:5000px;
 }
 .web_dialog_overlay
 {

@@ -51,14 +51,21 @@ namespace Lefarge_FE_App
             fillSelections();
             convertIDtoValue();
 
-            if (IsPostBack)
-            {
-                tblSurvey = (Table)Session["surveyTable"];
-            }
+            
             input2.Attributes.Add("onclick", "document.getElementById('" + hidenPic.ClientID + "').click(); return false;"); 
 
         }
-
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
+            {
+                tblSurvey.Visible = false;
+                input2.Visible = false;
+                hidenPic.Visible = false;
+            }
+            
+        }
+       
         protected void convertIDtoValue()
         {
             using (DefaultConnectionEF conn = new DefaultConnectionEF())
@@ -553,7 +560,14 @@ namespace Lefarge_FE_App
                     imgMain.Visible = true;
                     btnUpload.Visible = false;
                     fuMain.Visible = false;
+
+                    tblSurvey.Visible = true;
+
+                    input2.Visible = true;
+                    hidenPic.Visible = true;
                     conn.SaveChanges();
+                    
+                       
                 }
             }
         }
