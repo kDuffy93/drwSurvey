@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <h1>Questions</h1>
 
-    <a rel="external"  href="Question.aspx">Add a New Question</a>
+    <a  href="Question.aspx">Add a New Question</a>
     <asp:GridView ID="grdQuestions" runat="server" CssClass="table table-striped"
         AutoGenerateColumns="false" DataKeyNames="Question_ID" OnRowDeleting="grdQuestions_RowDeleting"  >
 

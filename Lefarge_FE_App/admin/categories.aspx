@@ -4,7 +4,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Categories</h1>
 
-    <a rel="external" href="Category.aspx">Add New Cateogry</a>
+    <a  href="Category.aspx">Add New Cateogry</a>
 
     <asp:GridView ID="grdCategories" runat="server" CssClass="table table-striped"
         AutoGenerateColumns="false" OnRowDeleting="grdCategories_RowDeleting"

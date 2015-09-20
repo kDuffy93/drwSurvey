@@ -3,7 +3,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Heading</h1>
 
-    <a rel="external" href="heading.aspx">Add New Heading</a>
+    <a href="heading.aspx">Add New Heading</a>
 
     <asp:GridView ID="grdHeadings" runat="server" CssClass="table table-striped"
         AutoGenerateColumns="false" OnRowDeleting="grdHeadings_RowDeleting"

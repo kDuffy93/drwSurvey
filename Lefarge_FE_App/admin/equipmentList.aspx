@@ -3,7 +3,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Equipment List</h1>
 
-    <a rel="external" href="equipment.aspx">Add New piece of equipment</a>
+    <a  href="equipment.aspx">Add New piece of equipment</a>
 
     <asp:GridView ID="grdEquipment" runat="server" CssClass="table table-striped"
         AutoGenerateColumns="False" OnRowDeleting="grdEquipment_OnRowDeleting"
