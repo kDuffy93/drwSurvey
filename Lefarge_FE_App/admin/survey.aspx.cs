@@ -277,7 +277,7 @@ namespace Lefarge_FE_App
                     if (item.Value == "no")
                     {
                         TextBox txtDate = new TextBox();
-                        txtDate.Text = DateTime.Now.ToString();
+                        txtDate.Text = Session["surveySubmitTime"].ToString();
                         txtDate.TextMode = TextBoxMode.Date;
                         txtDate.Attributes.Add("enableViewState", "True");
                         row.Cells[4].Controls.Add(txtDate);
@@ -285,7 +285,7 @@ namespace Lefarge_FE_App
                     else if (item.Value == "yes")
                     {
                         TextBox txtDate = new TextBox();
-                        txtDate.Text = DateTime.Now.ToString();
+                        txtDate.Text = Session["surveySubmitTime"].ToString();
                         txtDate.TextMode = TextBoxMode.Date;
                         txtDate.Attributes.Add("enableViewState", "True");
                         row.Cells[4].Controls.Add(txtDate);
@@ -301,7 +301,7 @@ namespace Lefarge_FE_App
             TableCell cell = button.Parent as TableCell;
             TableRow row = cell.Parent as TableRow;
             Table table = row.Parent as Table;
-            DateTime dateAndTime = DateTime.Now;
+            DateTime dateAndTime = Convert.ToDateTime(Session["surveySubmitTime"]);
             foreach (TableRow workingRow in table.Rows)
             {
                 if (workingRow.GetType() == typeof(TableHeaderRow))
@@ -337,7 +337,7 @@ namespace Lefarge_FE_App
 
 
                                             Picture p = new Picture();
-                                            var date = DateTime.Now.ToString();
+                                            var date = Session["surveySubmitTime"].ToString();
                                             string imgName = ia.FileName.ToString();
                                             int imageLength = ia.ContentLength;
                                             string imageType = ia.ContentType;
@@ -345,7 +345,7 @@ namespace Lefarge_FE_App
                                             var binaryImagedata = new byte[imageLength];
                                             ia.InputStream.Read(binaryImagedata, 0, imageLength);
 
-                                            var date1 = DateTime.Now;
+                                            var date1 = Convert.ToDateTime(Session["surveySubmitTime"]);
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
                                             string imgPath = ("surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
@@ -457,14 +457,14 @@ namespace Lefarge_FE_App
                                         foreach (HttpPostedFile ia in collection)
                                         {
                                             Picture p = new Picture();
-                                            var date = DateTime.Now.ToString();
+                                            var date = Session["surveySubmitTime"].ToString();
                                             string imgName = ia.FileName.ToString();
                                             int imageLength = ia.ContentLength;
                                             string imageType = ia.ContentType;
 
                                             var binaryImagedata = new byte[imageLength];
                                             ia.InputStream.Read(binaryImagedata, 0, imageLength);
-                                            var date1 = DateTime.Now;
+                                            var date1 = Convert.ToDateTime(Session["surveySubmitTime"]);
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
                                             string imgPath = ("surveyImages/surveyPics/" + "qid~" + r.Question_ID + "heading-" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName);
@@ -514,6 +514,8 @@ namespace Lefarge_FE_App
 
         protected void btnUpload_Click1(object sender, EventArgs e)
         {
+            var date = Session["surveySubmitTime"].ToString();
+            Session["surveySubmitTime"] = date;
             if (fuMain.HasFile)
             {
                 using (DefaultConnectionEF conn = new DefaultConnectionEF())
@@ -523,7 +525,7 @@ namespace Lefarge_FE_App
                     foreach (HttpPostedFile ia in collection)
                     {
                         Picture p = new Picture();
-                        var date = DateTime.Now.ToString();
+                        
                         string imgName = ia.FileName.ToString();
                         int imageLength = ia.ContentLength;
                         string imageType = ia.ContentType;
@@ -531,7 +533,7 @@ namespace Lefarge_FE_App
                         var binaryImagedata = new byte[imageLength];
                         ia.InputStream.Read(binaryImagedata, 0, imageLength);
 
-                        var date1 = DateTime.Now;
+                        var date1 = Convert.ToDateTime(Session["surveySubmitTime"]);
                         var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
                         string imgPath = ("surveyImages/mainPics/" +
