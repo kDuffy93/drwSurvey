@@ -7,7 +7,8 @@
     <div class="fixed-div" style="height:100px; width:250px;" > 
         
         <asp:Button  runat="server" data-icon="cameraButton"  text="Take Picture" ID="input2" Height="100px" CssClass="button" Width="249px"  />
-        <asp:FileUpload runat="server" CssClass="hiddenUpload" ID="hidenPic" capture="camera" />
+        <asp:FileUpload runat="server" CssClass="hiddenUpload" ID="hidenPic" capture="camera" accept="image/*" />
+       
 
     </div>
     <div class="well" style="width:768px; height:300px;">
