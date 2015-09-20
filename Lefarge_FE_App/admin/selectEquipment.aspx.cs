@@ -71,7 +71,7 @@ namespace Lefarge_FE_App
                         equipmentButton.Attributes.Add("data-role", "button");
                         equipmentButton.Attributes.Add("data-inline","true");
                         equipmentButton.NavigateUrl = "survey.aspx?selectedEquipment=" + b[i].Unit_Number;
-                        equipmentButton.Attributes["rel"] = "external";
+                      
                         pnlButtons.Controls.Add(equipmentButton);
 
 
