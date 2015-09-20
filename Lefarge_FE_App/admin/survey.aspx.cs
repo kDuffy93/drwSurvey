@@ -341,8 +341,8 @@ namespace Lefarge_FE_App
                                             var date1 = DateTime.Now;
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
-                                            string imgPath = ("surveyImages/surveyPics/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
-                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
+                                            string imgPath = ("surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
+                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
                                             p.URL = imgPath;
                                             p.date = date1;
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
@@ -460,9 +460,9 @@ namespace Lefarge_FE_App
                                             var date1 = DateTime.Now;
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
-                                            string imgPath = ("surveyImages/surveyPics/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName);
+                                            string imgPath = ("surveyImages/surveyPics/" + "qid~" + r.Question_ID + "heading-" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName);
 
-                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName)));
+                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "qid~" + r.Question_ID + "heading-" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName)));
 
                                             p.URL = imgPath;
                                             p.date = date1;
