@@ -452,6 +452,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\surveyImages\mainPics\" />
+    <Folder Include="admin\surveyImages\surveyPics\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

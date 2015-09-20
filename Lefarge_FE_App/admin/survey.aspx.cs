@@ -341,8 +341,8 @@ namespace Lefarge_FE_App
                                             var date1 = DateTime.Now;
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
-                                            string imgPath = ("surveyImages/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
-                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
+                                            string imgPath = ("surveyImages/surveyPics/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
+                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "heading#" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
                                             p.URL = imgPath;
                                             p.date = date1;
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
@@ -351,6 +351,7 @@ namespace Lefarge_FE_App
                                             p.photo = binaryImagedata;
                                             p.name = imgName;
 
+                                            imgMain.ImageUrl = imgPath;
                                             conn.Pictures.Add(p);
 
 
@@ -458,8 +459,8 @@ namespace Lefarge_FE_App
                                             ia.InputStream.Read(binaryImagedata, 0, imageLength);
                                             var date1 = DateTime.Now;
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
-                                            string imgPath = ("surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName);
-                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName)));
+                                            string imgPath = ("surveyImages/surveyPics/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName);
+                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName)));
 
                                             p.URL = imgPath;
                                             p.date = date1;
@@ -468,7 +469,7 @@ namespace Lefarge_FE_App
                                             p.question_ID = currentQuestionID;
                                             p.photo = binaryImagedata;
                                             p.name = imgName;
-
+                                            imgMain.ImageUrl = imgPath;
 
                                             conn.Pictures.Add(p);
 
