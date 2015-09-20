@@ -451,7 +451,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="admin\surveyImages\" />
+    <Folder Include="admin\surveyImages\mainPics\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

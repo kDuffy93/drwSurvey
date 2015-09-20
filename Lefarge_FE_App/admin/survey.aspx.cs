@@ -524,10 +524,10 @@ namespace Lefarge_FE_App
                         var date1 = DateTime.Now;
                         var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
-                        string imgPath = ("images/surveyImages/mainPics/" +
+                        string imgPath = ("surveyImages/mainPics/" +
                             "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
                         
-                       ia.SaveAs(Server.MapPath(("/images/surveyImages/mainPics/" +
+                       ia.SaveAs(Server.MapPath(("/admin/surveyImages/mainPics/" +
                              "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
                        
                         p.URL= imgPath;
