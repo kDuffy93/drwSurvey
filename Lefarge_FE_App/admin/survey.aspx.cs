@@ -459,7 +459,9 @@ namespace Lefarge_FE_App
                                             ia.InputStream.Read(binaryImagedata, 0, imageLength);
                                             var date1 = DateTime.Now;
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
+
                                             string imgPath = ("surveyImages/surveyPics/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName);
+
                                             ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "qid=" + r.Question_ID + "heading#" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName)));
 
                                             p.URL = imgPath;
