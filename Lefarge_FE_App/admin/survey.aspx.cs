@@ -491,9 +491,10 @@ namespace Lefarge_FE_App
                                 }// if file upload = true
 
                             } //foreach control
-                            conn.Results.Add(r);
-                            conn.SaveChanges();
+                           
                         } // checks to see if workign row is not a header row
+                        conn.Results.Add(r);
+                        conn.SaveChanges();
                     } //default conn
                 } //for each table row
                 btnNewSurvey.Visible = true;

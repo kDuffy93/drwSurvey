@@ -16,12 +16,15 @@
         <asp:TextBox ID="txtEqID" runat="server" Enabled="false"></asp:TextBox>
             </div>
         <div style="float:right;">
-            <div style="height:30px; width:300px;">
+            <div style="float:left;">
+         <asp:Image Visible="false" ID="imgMain" AlternateText="Main Equipment Image" Width="275" Height="180"  runat="server" />
+             </div>
+            <div style="height:30px; width:300px;float:left;">
                 <asp:Button ID="Button2" runat="server" Text="Click to view pop-up window" />
-                <asp:Image Visible="false" ID="imgMain" AlternateText="Main Equipment Image" ImageAlign="Middle" runat="server"
-/>
+
 
             </div>
+            
        
   
 
@@ -29,6 +32,7 @@
              
            
         </div>
+        
     </div>
     
 <asp:Panel ID="Panel1" runat="server" style="" BackColor="LightGray" width="500px" Height="350">
