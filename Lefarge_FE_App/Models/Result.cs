@@ -34,6 +34,8 @@ public partial class Result
 
     public int heading_ID { get; set; }
 
+    public Nullable<System.DateTime> tempDate { get; set; }
+
 }
 
 }

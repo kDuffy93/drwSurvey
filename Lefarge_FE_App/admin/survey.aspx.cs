@@ -351,7 +351,7 @@ namespace Lefarge_FE_App
                                             string imgPath = ("surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
                                             ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
                                             p.URL = imgPath;
-                                            p.date = date1;
+                                            p.DateSubmited = date1;
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
                                             p.heading_ID = currentHeadingId;
 
@@ -472,7 +472,7 @@ namespace Lefarge_FE_App
                                             ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "qid~" + r.Question_ID + "heading-" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName)));
 
                                             p.URL = imgPath;
-                                            p.date = date1;
+                                            p.DateSubmited = date1;
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
                                             p.heading_ID = currentHeadingID;
                                             p.question_ID = currentQuestionID;
@@ -543,7 +543,7 @@ namespace Lefarge_FE_App
                              "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
                        
                         p.URL= imgPath;
-                        p.date = date1;
+                        p.DateSubmited = date1;
                         p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
 
                         p.photo = binaryImagedata;

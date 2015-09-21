@@ -113,7 +113,6 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="date" Type="date" Nullable="false" />
           <Property Name="heading_ID" Type="int" />
           <Property Name="equipment_ID" Type="int" />
           <Property Name="name" Type="varchar" MaxLength="50" />
@@ -121,6 +120,8 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="photo" Type="varbinary(max)" />
           <Property Name="URL" Type="varchar(max)" />
+          <Property Name="tempDate" Type="datetime" />
+          <Property Name="DateSubmited" Type="datetime" />
         </EntityType>
         <EntityType Name="Plants">
           <Key>
@@ -170,6 +171,7 @@
           <Property Name="deficiency/defect" Type="varchar" MaxLength="500" />
           <Property Name="Equipment_ID" Type="int" Nullable="false" />
           <Property Name="heading_ID" Type="int" Nullable="false" />
+          <Property Name="tempDate" Type="datetime" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -487,13 +489,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="heading_ID" Type="Int32" />
           <Property Name="equipment_ID" Type="Int32" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="question_ID" Type="Int32" />
           <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="tempDate" Type="DateTime" Precision="3" />
+          <Property Name="DateSubmited" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Plant">
           <Key>
@@ -547,6 +550,7 @@
           <Property Name="deficiency_defect" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Equipment_ID" Type="Int32" Nullable="false" />
           <Property Name="heading_ID" Type="Int32" Nullable="false" />
+          <Property Name="tempDate" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -828,12 +832,13 @@
           <EntitySetMapping Name="Pictures">
             <EntityTypeMapping TypeName="drwdataModel.Picture">
               <MappingFragment StoreEntitySet="Pictures">
+                <ScalarProperty Name="DateSubmited" ColumnName="DateSubmited" />
+                <ScalarProperty Name="tempDate" ColumnName="tempDate" />
                 <ScalarProperty Name="URL" ColumnName="URL" />
                 <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="question_ID" ColumnName="question_ID" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="heading_ID" ColumnName="heading_ID" />
                 <ScalarProperty Name="equipment_ID" ColumnName="equipment_ID" />
               </MappingFragment>
@@ -882,6 +887,7 @@
           <EntitySetMapping Name="Results">
             <EntityTypeMapping TypeName="drwdataModel.Result">
               <MappingFragment StoreEntitySet="Results">
+                <ScalarProperty Name="tempDate" ColumnName="tempDate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Response" ColumnName="Response" />
                 <ScalarProperty Name="Date_Completed" ColumnName="Date_Completed" />
