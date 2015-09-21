@@ -18,6 +18,9 @@
         <div style="float:right;">
             <div style="height:30px; width:300px;">
                 <asp:Button ID="Button2" runat="server" Text="Click to view pop-up window" />
+                <asp:Image Visible="false" ID="imgMain" AlternateText="Main Equipment Image" ImageAlign="Middle" runat="server"
+/>
+
             </div>
        
   

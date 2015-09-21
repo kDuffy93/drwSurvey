@@ -34,6 +34,18 @@ namespace Lefarge_FE_App.admin
 
 
         }
+
+        protected void Page_LoadComplete(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                Session["selectedDate"] = Convert.ToDateTime(ddlDates.SelectedValue);
+                Session["selectedDateIndex"] = ddlDates.SelectedIndex;
+                imgMain.Visible = true;
+                imgMain.ImageUrl = "/admin/surveyImages/mainPics/eqid&" + Request.QueryString["selectedEquipment"].ToString() + "dc_" + (Convert.ToDateTime(ddlDates.SelectedValue)).ToString("MM.dd.yyyy.HH.mm.ss") + "image.jpg";
+            
+}
+        }
         protected void selectDate(int EquipmentID)
         {
             using (DefaultConnectionEF conn = new DefaultConnectionEF())
