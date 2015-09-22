@@ -23,10 +23,11 @@
     <script src="Script1.js"></script>
     	<script src="cordova-js/4.0.0/"></script>
 	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-2.0.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="Script2.js"></script>
     
-	<script type="text/javascript" charset="utf-8" src="jquery-2.0.0.min.js"></script>
+	
 	<script type="text/javascript" charset="utf-8" src="quantize.js"></script>
 	<script type="text/javascript" charset="utf-8" src="color-thief.js"></script>
    

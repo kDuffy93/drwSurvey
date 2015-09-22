@@ -23,30 +23,30 @@ namespace Lefarge_FE_App
         
 
           
-            HttpException objError = Server.GetLastError() as HttpException;
+          //  HttpException objError = Server.GetLastError() as HttpException;
              
              
-            if (objError.GetHttpCode() == 404)
-            {
-                Server.Transfer("/404.aspx");
-                return;
-            }
+          //  if (objError.GetHttpCode() == 404)
+          //  {
+          //      Server.Transfer("/404.aspx");
+          //      return;
+          //  }
 
-          /*  //email the error
-            MailMessage objMail = new MailMessage();
+          ///*  //email the error
+          //  MailMessage objMail = new MailMessage();
 
-            objMail.Subject = "BrechinFES ERROR";
-            objMail.Body = "Type: " + objError.GetType() + "<br />Source: " + objError.Source + "<br />Message: " + objError.Message + "<br />StackTrace: " + objError.StackTrace;
-            objMail.From = new MailAddress("support@lafargefes.mail");
-            objMail.To.Add("kyleduffy83@gmail.com");
-            objMail.IsBodyHtml = true;
+          //  objMail.Subject = "BrechinFES ERROR";
+          //  objMail.Body = "Type: " + objError.GetType() + "<br />Source: " + objError.Source + "<br />Message: " + objError.Message + "<br />StackTrace: " + objError.StackTrace;
+          //  objMail.From = new MailAddress("support@lafargefes.mail");
+          //  objMail.To.Add("kyleduffy83@gmail.com");
+          //  objMail.IsBodyHtml = true;
 
-            SmtpClient objClient = new SmtpClient();
-            objClient.Send(objMail);
-           * */
+          //  SmtpClient objClient = new SmtpClient();
+          //  objClient.Send(objMail);
+          // * */
 
-            Server.ClearError();
-            Server.Transfer("/error.aspx");
+          //  Server.ClearError();
+          //  Server.Transfer("/error.aspx");
         }
        
     }
