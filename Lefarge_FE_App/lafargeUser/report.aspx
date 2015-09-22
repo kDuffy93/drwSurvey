@@ -49,9 +49,9 @@ This is what the window will look like where pictures are going to go. Im still 
 
 
     <asp:DropDownList runat="server" ID="ddlDates" AutoPostBack="true"   OnSelectedIndexChanged="ddlDates_SelectedIndexChanged" OnDataBinding="ddlDates_DataBinding"></asp:DropDownList>
-
+    
     <asp:GridView ID="grdResults" runat="server" CssClass="table table-striped"
-        AutoGenerateColumns="False"
+        AutoGenerateColumns="False" OnRowCommand="grdResults_RowCommand"
         DataKeyNames="ID"  OnRowDataBound="grdResults_RowDataBound" >
         <Columns>   
                  
@@ -62,6 +62,8 @@ This is what the window will look like where pictures are going to go. Im still 
              <asp:BoundField DataField="heading_ID" HeaderText="For Heading" />
              <asp:BoundField DataField="Date_Completed" HeaderText="Date Completed"/>
               <asp:BoundField   HeaderText="View Images" />
+            <asp:ButtonField CommandName="viewImage" HeaderText="viewImageTest" />
+            
 
             
          

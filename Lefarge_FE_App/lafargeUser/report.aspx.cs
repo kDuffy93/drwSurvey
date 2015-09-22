@@ -122,7 +122,7 @@ namespace Lefarge_FE_App.admin
                     dr.Cells[0].Text = tempQuestion.Question1;
 
                     var hID = Convert.ToInt32(dr.Cells[4].Text);
-
+                    var tempDate = ddlDates.SelectedValue;
                     var tempHeading = (from h in conn.Headings
                                        where h.Heading_ID == hID
                                        select h).FirstOrDefault();
@@ -141,7 +141,7 @@ namespace Lefarge_FE_App.admin
                     tempButton2.Attributes.Add("data-hid", hID.ToString());
                     tempButton2.Attributes.Add("data-date", ddlDates.SelectedValue.ToString());
                     tempButton2.Attributes.Add("data-eqid", txtEqID.Text.ToString());
-                    tempButton2.Attributes.Add("onclick", "document.getElementById('" + Button2.ClientID + "').click(); return false;");
+                    //tempButton2.Attributes.Add("onclick", "document.getElementById('" + Button2.ClientID + "').click(); return false;");
                     tempButton2.Command += header_click;
                     
                     
@@ -197,6 +197,14 @@ namespace Lefarge_FE_App.admin
             string eqid = b.Attributes["data-eqid"].ToString();
             Response.Redirect("default.aspx");
             
+        }
+
+        protected void grdResults_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName=="viewImages")
+            {
+
+            }
         }
        
 
