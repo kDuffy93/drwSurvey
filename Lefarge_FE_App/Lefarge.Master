@@ -6,18 +6,21 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
    <title>Lafarge Fixed Equipment Surveys</title>
+    <!-- apple web app apable code
     <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent"/>
 <link rel="apple-touch-icon" href="icon-152.png"/>
-<!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+
 <meta name="mobile-web-app-capable" content="yes"/>
 <link rel="shortcut icon" sizes="196x196" href="icon-196.png"/>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+    -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="~/lafargeStyle.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
 	<script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+
+    <script src="Script1.js"></script>
     	<script src="cordova-js/4.0.0/"></script>
 	<script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

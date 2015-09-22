@@ -20,7 +20,7 @@
          <asp:Image Visible="false" ID="imgMain" AlternateText="Main Equipment Image" Width="275" Height="180"  runat="server" />
              </div>
             <div style="height:30px; width:300px;float:left;">
-                <asp:Button ID="Button2" runat="server" Text="Click to view pop-up window" />
+                <asp:Button ID="Button2"  runat="server" Text="Click to view pop-up window" />
 
 
             </div>
@@ -61,7 +61,7 @@ This is what the window will look like where pictures are going to go. Im still 
             <asp:BoundField DataField="Action_plan" HeaderText="Action Plan"/>
              <asp:BoundField DataField="heading_ID" HeaderText="For Heading" />
              <asp:BoundField DataField="Date_Completed" HeaderText="Date Completed"/>
-            <asp:ButtonField Text="View Images" ButtonType="Button" />
+              <asp:BoundField   HeaderText="View Images" />
 
             
          

@@ -35,6 +35,7 @@ namespace Lefarge_FE_App
                         equipmentButton.ID = b[i].Unit_Number.ToString();
                         equipmentButton.Attributes.Add("data-role", "button");
                         equipmentButton.Attributes.Add("data-inline", "true");
+                        equipmentButton.Attributes.Add("rel", "external");
                         equipmentButton.NavigateUrl = "report.aspx?selectedEquipment=" + b[i].Unit_Number;
                        
                         pnlButtons.Controls.Add(equipmentButton);
