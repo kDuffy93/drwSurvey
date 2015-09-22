@@ -332,6 +332,11 @@ namespace Lefarge_FE_App
                                     {
                                         IList<HttpPostedFile> collection = fu.PostedFiles;
                                         int picNumber = 1;
+                                        var count = fu.PostedFiles.Count();
+                                        if(count >= 2)
+                                        {
+
+                                        }
                                         foreach (HttpPostedFile ia in collection)
                                         {
 
@@ -454,6 +459,11 @@ namespace Lefarge_FE_App
                                     {
                                         IList<HttpPostedFile> collection = fu.PostedFiles;
                                         int picNumber = 1;
+                                        var count = fu.PostedFiles.Count();
+                                        if (count >= 2)
+                                        {
+
+                                        }
                                         foreach (HttpPostedFile ia in collection)
                                         {
                                             Picture p = new Picture();
