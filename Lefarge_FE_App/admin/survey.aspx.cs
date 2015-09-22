@@ -331,7 +331,7 @@ namespace Lefarge_FE_App
                                     if (fu.HasFile == true)
                                     {
                                         IList<HttpPostedFile> collection = fu.PostedFiles;
-
+                                        int picNumber = 1;
                                         foreach (HttpPostedFile ia in collection)
                                         {
 
@@ -348,8 +348,8 @@ namespace Lefarge_FE_App
                                             var date1 = Convert.ToDateTime(Session["surveySubmitTime"]);
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
-                                            string imgPath = ("surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
-                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
+                                            string imgPath = ("surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + "image" + picNumber + ".jpg");
+                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "heading-" + currentHeadingId + "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + "image" + picNumber + ".jpg")));
                                             p.URL = imgPath;
                                             p.DateSubmited = date1;
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
@@ -360,7 +360,7 @@ namespace Lefarge_FE_App
 
                                             imgMain.ImageUrl = imgPath;
                                             conn.Pictures.Add(p);
-
+                                            picNumber++;
 
                                         }
 
@@ -453,7 +453,7 @@ namespace Lefarge_FE_App
                                     if (fu.HasFile == true)
                                     {
                                         IList<HttpPostedFile> collection = fu.PostedFiles;
-
+                                        int picNumber = 1;
                                         foreach (HttpPostedFile ia in collection)
                                         {
                                             Picture p = new Picture();
@@ -467,9 +467,9 @@ namespace Lefarge_FE_App
                                             var date1 = Convert.ToDateTime(Session["surveySubmitTime"]);
                                             var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
-                                            string imgPath = ("surveyImages/surveyPics/" + "qid~" + r.Question_ID + "heading-" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName);
+                                            string imgPath = ("surveyImages/surveyPics/" + "qid~" + r.Question_ID + "heading-" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + "image" + picNumber + ".jpg");
 
-                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "qid~" + r.Question_ID + "heading-" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + imgName)));
+                                            ia.SaveAs(Server.MapPath(("/admin/surveyImages/surveyPics/" + "qid~" + r.Question_ID + "heading-" + r.heading_ID + "eqid&" + r.Equipment_ID + "dc_" + date1String + "image" + picNumber + ".jpg")));
 
                                             p.URL = imgPath;
                                             p.DateSubmited = date1;
@@ -482,7 +482,7 @@ namespace Lefarge_FE_App
 
                                             conn.Pictures.Add(p);
 
-
+                                            picNumber++;
 
                                         }
 
@@ -538,10 +538,10 @@ namespace Lefarge_FE_App
                         var date1String = date1.ToString("MM.dd.yyyy.HH.mm.ss");
 
                         string imgPath = ("surveyImages/mainPics/" +
-                            "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName);
+                            "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + "image" +  ".jpg");
                         
                        ia.SaveAs(Server.MapPath(("/admin/surveyImages/mainPics/" +
-                             "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + imgName)));
+                             "eqid&" + Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString()) + "dc_" + date1String + "image" + ".jpg")));
                        
                         p.URL= imgPath;
                         p.DateSubmited = date1;
