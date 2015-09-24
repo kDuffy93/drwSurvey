@@ -360,7 +360,7 @@ namespace Lefarge_FE_App
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
                                             p.heading_ID = currentHeadingId;
 
-                                            p.photo = binaryImagedata;
+                                            
                                             p.name = imgName;
 
                                             imgMain.ImageUrl = imgPath;
@@ -486,7 +486,7 @@ namespace Lefarge_FE_App
                                             p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
                                             p.heading_ID = currentHeadingID;
                                             p.question_ID = currentQuestionID;
-                                            p.photo = binaryImagedata;
+                                           
                                             p.name = imgName;
                                             imgMain.ImageUrl = imgPath;
 
@@ -557,7 +557,7 @@ namespace Lefarge_FE_App
                         p.DateSubmited = date1;
                         p.equipment_ID = Convert.ToInt32(Request.QueryString["selectedEquipment"].ToString());
 
-                        p.photo = binaryImagedata;
+                       
                         p.name = imgName;
 
 
