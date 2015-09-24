@@ -49,7 +49,7 @@
             <li><a  rel="external" href="/admin/startSurvey.aspx">Start Survey</a></li>
             <li><a  rel="external" href="/admin/plants.aspx">Plant</a></li>
             <li><a  rel="external" href="/admin/equipmentList.aspx">Equipment</a></li>
-            <li><a  rel="external" href="/admin/categories.aspx">Categories</a></li>
+            <li><a  rel="external" href="/admin/categories.aspx">Categories</a></li> 
             <li><a  rel="external" href="/admin/headings.aspx">Headings</a></li> 
             <li><a  rel="external" href="/admin/questionList.aspx">Questions</a></li>
             <li><a  rel="external" href="/lafargeUser/startReport.aspx">Generate Reports</a></li>

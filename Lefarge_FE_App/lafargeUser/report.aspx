@@ -62,7 +62,7 @@ This is what the window will look like where pictures are going to go. Im still 
              <asp:BoundField DataField="heading_ID" HeaderText="For Heading" />
              <asp:BoundField DataField="Date_Completed" HeaderText="Date Completed"/>
               <asp:BoundField   HeaderText="View Images" />
-            
+             
             
 
             
