@@ -19,10 +19,10 @@
             <div style="float:left;">
          <asp:Image Visible="false" ID="imgMain" AlternateText="Main Equipment Image" Width="275" Height="180"  runat="server" />
              </div>
-            <div style="height:30px; width:350px;float:left;">
+            <div style="height:30px; width:300px;float:left;">
                 <asp:Button ID="Button2"  runat="server" Text="Click to view pop-up window" />
-               <asp:Button runat="server" ID="btnDifPlant" Text=" Browse results for another plant"  PostBackUrl="~/lafargeUser/startReport.aspx"   Class="ui-btn ui-icon-back ui-btn-icon-left"/>
-                 <a href="~/lafargeUser/selectResults.aspx"  class="ui-btn ui-icon-back ui-btn-icon-left"> Browse other results for this plant </a>
+               <asp:Button runat="server" ID="btnDifPlant" Text=" Browse results for another plant"  PostBackUrl="~/lafargeUser/startReport.aspx"    CssClass="btn btn-default ui-btn-icon-left ui-icon-back"/>
+                 <asp:Button runat="server" ID="btndifequip" Text=" Browse other results for this plant"   PostBackUrl="~/lafargeUser/selectResults.aspx"  CssClass="ui-btn ui-icon-back ui-btn-icon-left"/>
 
 
 
