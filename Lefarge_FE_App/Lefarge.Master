@@ -40,7 +40,7 @@
   <nav class="nav navbar-default">
        
         <ul class="nav navbar-nav">
-            <li> <a href="/lafargeUser/default.aspx"> <asp:Image runat="server"   ImageUrl="images/lafarge.jpg" PostBackUrl="~/default.aspx" AlternateText="Lafarge Home"/></a></li>
+            <li> <a rel="external" href="/lafargeUser/default.aspx"> <asp:Image runat="server"   ImageUrl="images/lafarge.jpg" PostBackUrl="~/default.aspx" AlternateText="Lafarge Home"/></a></li>
             <asp:PlaceHolder runat="server" ID="plhPublic">
             <li><a href="register.aspx">Register</a></li>
              <li><a  href="login.aspx">Log in</a></li></asp:PlaceHolder>
@@ -53,7 +53,7 @@
             <li><a  href="/admin/headings.aspx">Headings</a></li>
             <li><a  href="/admin/questionList.aspx">Questions</a></li>
             <li><a  href="/lafargeUser/startReport.aspx">Generate Reports</a></li>
-            <li><a  href="/lafargeUser/logout.aspx">Log out</a></li></asp:PlaceHolder>
+            <li><a  rel="external" href="/lafargeUser/logout.aspx">Log out</a></li></asp:PlaceHolder>
             
             <asp:PlaceHolder runat="server" ID="plhLafargeUser">
                 <li><a  href="/lafargeUser/logout.aspx">Log out</a></li>
