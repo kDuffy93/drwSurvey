@@ -21,7 +21,7 @@
              </div>
             <div style="height:30px; width:300px;float:left;">
                 <asp:Button ID="Button2"  runat="server" Text="Click to view pop-up window" />
-                <a class="ui-btn" href="javascript:history.go(-1)">Go Back</a>
+                <a data-rel="back" data-role="button" data-icon="back">Go Back</a>
 
 
             </div>
