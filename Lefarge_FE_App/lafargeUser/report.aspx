@@ -21,13 +21,10 @@
              </div>
             <div style="height:30px; width:300px;float:left;">
                 <asp:Button ID="Button2"  runat="server" Text="Click to view pop-up window" />
-                 <button onclick="goBack()">Go Back</button>
+               <asp:Button runat="server" ID="btnDifPlant" Text=" Browse results for another plant"  PostBackUrl="~/lafargeUser/startReport.aspx"   CssClass="ui-btn ui-icon-back ui-btn-icon-left"/>
+                 <asp:Button runat="server" ID="btndifequip" Text=" Browse other results for this plant"   PostBackUrl="~/lafargeUser/selectResults.aspx"  CssClass="ui-btn ui-icon-back ui-btn-icon-left"/>
 
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
+
 
 
             </div>
