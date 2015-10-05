@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -121,9 +122,6 @@
     <Content Include="admin\categories.aspx" />
     <Content Include="admin\category.aspx" />
     <Content Include="images\captureImage.png" />
-    <Content Include="images\surveyImages\heading#9eqid&amp;1dc_09.16.2015 23.27.01images.jpg" />
-    <Content Include="images\surveyImages\mainPics\eqid&amp;1dc_09.16.2015 23.19.54pic.jpg" />
-    <Content Include="images\surveyImages\mainPics\eqid&amp;1dc_09.17.2015 01.13.42images.jpg" />
     <Content Include="lafargeUser\report.aspx" />
     <Content Include="assignUR.aspx" />
     <Content Include="controls\defrib.ascx" />
@@ -454,6 +452,7 @@
     <Folder Include="admin\surveyImages\mainPics\" />
     <Folder Include="admin\surveyImages\surveyPics\" />
     <Folder Include="App_Data\" />
+    <Folder Include="images\surveyImages\mainPics\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
