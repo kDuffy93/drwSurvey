@@ -115,12 +115,10 @@
           </Key>
           <Property Name="heading_ID" Type="int" />
           <Property Name="equipment_ID" Type="int" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="250" />
           <Property Name="question_ID" Type="int" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="photo" Type="varbinary(max)" />
           <Property Name="URL" Type="varchar(max)" />
-          <Property Name="tempDate" Type="datetime" />
           <Property Name="DateSubmited" Type="datetime" />
         </EntityType>
         <EntityType Name="Plants">
@@ -491,11 +489,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="heading_ID" Type="Int32" />
           <Property Name="equipment_ID" Type="Int32" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="question_ID" Type="Int32" />
-          <Property Name="photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="tempDate" Type="DateTime" Precision="3" />
           <Property Name="DateSubmited" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Plant">
@@ -833,9 +829,7 @@
             <EntityTypeMapping TypeName="drwdataModel.Picture">
               <MappingFragment StoreEntitySet="Pictures">
                 <ScalarProperty Name="DateSubmited" ColumnName="DateSubmited" />
-                <ScalarProperty Name="tempDate" ColumnName="tempDate" />
                 <ScalarProperty Name="URL" ColumnName="URL" />
-                <ScalarProperty Name="photo" ColumnName="photo" />
                 <ScalarProperty Name="question_ID" ColumnName="question_ID" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

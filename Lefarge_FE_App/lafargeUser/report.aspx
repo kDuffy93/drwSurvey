@@ -43,7 +43,6 @@
 This is what the window will look like where pictures are going to go. Im still working on this, currently neither work.<br /><br />
     When you click the View Image button, It will show you all the pictures that were uploaded for that Question.<br /><br />
     When you click on a heading button, It will show you all the pictures that are accociated with that heading including any uploaded to each question in that heading & the pictures for that heading that arent associated to a specefic question.<br />
-
     <div style="float:inherit;height:50px; width:200px;">
 <asp:Button ID="OKButton" runat="server" Text="Close" Height="20px" Width="100px" />
     </div>

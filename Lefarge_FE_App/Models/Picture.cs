@@ -28,11 +28,7 @@ public partial class Picture
 
     public Nullable<int> question_ID { get; set; }
 
-    public byte[] photo { get; set; }
-
     public string URL { get; set; }
-
-    public Nullable<System.DateTime> tempDate { get; set; }
 
     public Nullable<System.DateTime> DateSubmited { get; set; }
 

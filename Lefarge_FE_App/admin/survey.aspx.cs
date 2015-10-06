@@ -525,7 +525,8 @@ namespace Lefarge_FE_App
 
         protected void btnUpload_Click1(object sender, EventArgs e)
         {
-            var date = DateTime.Now.ToString();
+            var date = DateTime.Now.AddMinutes(-240).ToString();
+            
             Session["surveySubmitTime"] = date;
             if (fuMain.HasFile)
             {
