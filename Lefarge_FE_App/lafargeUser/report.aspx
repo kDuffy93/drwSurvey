@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/report.Master" AutoEventWireup="true" CodeBehind="report.aspx.cs" Inherits="Lefarge_FE_App.admin.report" %>
 
+<%@ Register Assembly="Obout.Ajax.UI" Namespace="Obout.Ajax.UI.FileUpload" TagPrefix="obout" %>
+
+<%@ Register Assembly="obout_ImageZoom_NET" Namespace="OboutInc.ImageZoom" TagPrefix="obout" %>
+
 
 
 
@@ -44,11 +48,17 @@ This is what the window will look like where pictures are going to go. Im still 
     When you click the View Image button, It will show you all the pictures that were uploaded for that Question.<br /><br />
     When you click on a heading button, It will show you all the pictures that are accociated with that heading including any uploaded to each question in that heading & the pictures for that heading that arent associated to a specefic question.<br />
     <div style="float:inherit;height:50px; width:200px;">
+        <asp:DataList runat="server" ID="dlPhotos" RepeatDirection="Horizontal" RepeatColumns="3" Width="100%" BorderColor="Blue" BorderStyle="Solid" BorderWidth="3px" > 
+            <ItemTemplate>
+                <obout:ImageZoom ID="ImageZoom" imageurl="<%# Eval("URL") %>" runat="server" da />
+            </ItemTemplate>
+        </asp:DataList>
 <asp:Button ID="OKButton" runat="server" Text="Close" Height="20px" Width="100px" />
     </div>
+   
 </asp:Panel>
     <ajaxToolkit:ModalPopupExtender ID="mpe" runat="server" TargetControlId="Button2" 
- PopupControlID="Panel1" OkControlID="OKButton"   PopupDragHandleControlID="panel1" Drag="true"/>
+ PopupControlID="Panel1" OkControlID="OKButton"     PopupDragHandleControlID="panel1" Drag="true"/>
 
 
     <asp:DropDownList runat="server" ID="ddlDates" AutoPostBack="true"   OnSelectedIndexChanged="ddlDates_SelectedIndexChanged" OnDataBinding="ddlDates_DataBinding"></asp:DropDownList>
@@ -64,13 +74,7 @@ This is what the window will look like where pictures are going to go. Im still 
             <asp:BoundField DataField="Action_plan" HeaderText="Action Plan"/>
              <asp:BoundField DataField="heading_ID" HeaderText="For Heading" />
              <asp:BoundField DataField="Date_Completed" HeaderText="Date Completed"/>
-              <asp:BoundField   HeaderText="View Images" />
-             
-            
-
-            
-         
-
+             <asp:ButtonField CommandName="viewImages"   HeaderText="View Images" />
         </Columns>
     </asp:GridView>
    

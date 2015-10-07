@@ -133,22 +133,24 @@ namespace Lefarge_FE_App.admin
                     tempButton.Attributes.Add("data-date", ddlDates.SelectedValue.ToString());
                     tempButton.Attributes.Add("data-eqid", txtEqID.Text.ToString());
                     tempButton.Attributes.Add("onclick", "document.getElementById('" + Button2.ClientID + "').click(); return false;"); 
-                    tempButton.Command += header_click;
-
+                    
+                    
                     Button tempButton2 = new Button();
                     tempButton2.ID = "btnQid=" + qID + "Hid:" + hID+"2";
                     tempButton2.Text = "View Images";
                     tempButton2.Attributes.Add("data-hid", hID.ToString());
                     tempButton2.Attributes.Add("data-date", ddlDates.SelectedValue.ToString());
                     tempButton2.Attributes.Add("data-eqid", txtEqID.Text.ToString());
+                    tempButton2.Attributes.Add("data-qid", qID.ToString());
                     //tempButton2.Attributes.Add("onclick", "document.getElementById('" + Button2.ClientID + "').click(); return false;");
-                    tempButton2.Command += header_click;
-                    
-                    
+
+                    // tempButton2.Command += header_click;
+                    tempButton2.Attributes.Add("onclick", "header_click()");
                           
                     
                     dr.Cells[4].Controls.Add(tempButton);
                     dr.Cells[6].Controls.Add(tempButton2);
+                    
                     var response = dr.Cells[1].Text;
 
                     if (response == "True")
@@ -163,6 +165,26 @@ namespace Lefarge_FE_App.admin
 
                 }
             }
+        }
+
+        private void header_click(object sender, EventArgs e)
+        {
+            var b = sender as Button;
+            string hid = b.Attributes["data-hid"].ToString();
+            string date = b.Attributes["data-date"].ToString();
+            string eqid = b.Attributes["data-eqid"].ToString();
+            string qid = b.Attributes["data-qid"].ToString();
+            Response.Redirect("default.aspx");
+        }
+
+        private void TempButton2_Command(object sender, CommandEventArgs e)
+        {
+            var b = sender as Button;
+            string hid = b.Attributes["data-hid"].ToString();
+            string date = b.Attributes["data-date"].ToString();
+            string eqid = b.Attributes["data-eqid"].ToString();
+            string qid = b.Attributes["data-qid"].ToString();
+            
         }
 
         protected void ddlDates_SelectedIndexChanged(object sender, EventArgs e)
@@ -189,25 +211,25 @@ namespace Lefarge_FE_App.admin
                
               }*/
         }
-        protected void header_click(object sender, EventArgs e)
-        {
-            var b = sender as Button;
-            string hid = b.Attributes["data-hid"].ToString();
-            string date = b.Attributes["data-date"].ToString();
-            string eqid = b.Attributes["data-eqid"].ToString();
-            Response.Redirect("default.aspx");
-            
-        }
+        
 
         protected void grdResults_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if(e.CommandName=="viewImages")
             {
-
+                var b = sender as Button;
+                string hid = b.Attributes["data-hid"].ToString();
+                string date = b.Attributes["data-date"].ToString();
+                string eqid = b.Attributes["data-eqid"].ToString();
+                string qid = b.Attributes["data-qid"].ToString();
+                Response.Redirect("default.aspx");
             }
         }
-       
 
+        protected void dlPhotos_ItemCreated(object sender, DataListItemEventArgs e)
+        {
+
+        }
     }
 }
 
