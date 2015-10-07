@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/report.Master" AutoEventWireup="true" CodeBehind="report.aspx.cs" Inherits="Lefarge_FE_App.admin.report" %>
 
+<%@ Register Assembly="Obout.Ajax.UI" Namespace="Obout.Ajax.UI.HTMLEditor" TagPrefix="obout" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit.HTMLEditor" TagPrefix="cc1" %>
+
 <%@ Register Assembly="Obout.Ajax.UI" Namespace="Obout.Ajax.UI.FileUpload" TagPrefix="obout" %>
 
 <%@ Register Assembly="obout_ImageZoom_NET" Namespace="OboutInc.ImageZoom" TagPrefix="obout" %>
@@ -7,18 +11,18 @@
 
 
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <div class="well" style="height:200px">
-    
+    <div class="well" style="height:200px" >
+
         <div style="float:left;">
         <h3>Report for:</h3>
         <asp:Label runat="server" For="txtEqUn">Unit #</asp:Label>
           <asp:TextBox ID="txtEqUn" runat="server" Enabled="false"></asp:TextBox>
          <asp:Label runat="server" For="txtEqID">Unit #</asp:Label>
         <asp:TextBox ID="txtEqID" runat="server" Enabled="false"></asp:TextBox>
-            </div>
+         </div>
+
         <div style="float:right;">
             <div style="float:left;">
          <asp:Image Visible="false" ID="imgMain" AlternateText="Main Equipment Image" Width="275" Height="180"  runat="server" />
@@ -57,6 +61,7 @@ This is what the window will look like where pictures are going to go. Im still 
     </div>
    
 </asp:Panel>
+
     <ajaxToolkit:ModalPopupExtender ID="mpe" runat="server" TargetControlId="Button2" 
  PopupControlID="Panel1" OkControlID="OKButton"     PopupDragHandleControlID="panel1" Drag="true"/>
 

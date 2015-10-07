@@ -24,10 +24,6 @@ namespace Lefarge_FE_App
                 var b = (from equip in conn.Equipments
                          where equip.Plant_ID == SelectedPlant
                          select equip).ToList();
-                
-
-                
-       
                     for (int i = 0; i < b.Count; i++)
                     { 
                         HyperLink equipmentButton = new HyperLink();
@@ -37,16 +33,12 @@ namespace Lefarge_FE_App
                         equipmentButton.Attributes.Add("data-inline", "true");
                         equipmentButton.Attributes.Add("rel", "external");
                         equipmentButton.NavigateUrl = "report.aspx?selectedEquipment=" + b[i].Unit_Number;
-                       
                         pnlButtons.Controls.Add(equipmentButton);
-
                     }
                 
                 var r = (from result in conn.Results
-                        
                          select result).ToList();
                 var reid = (from result in conn.Results
-
                             select result.Equipment_ID).ToList();
                 foreach (HyperLink hl in pnlButtons.Controls)
                 {
@@ -57,9 +49,6 @@ namespace Lefarge_FE_App
                         buttonToHide.Visible = false;
                     }
                 }
-                //set the datasource to the created list and bind it to the dropdown
-
-
             }
         }
     }
