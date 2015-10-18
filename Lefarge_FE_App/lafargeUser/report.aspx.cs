@@ -11,25 +11,27 @@ namespace Lefarge_FE_App.admin
 {
     public partial class report : System.Web.UI.Page
     {
+        DateTime currentlySelectedDate;
         protected void Page_Load(object sender, EventArgs e)
         {
             Int32 EquipmentID = Convert.ToInt32(Request.QueryString["selectedEquipment"]);
+            
             if (!IsPostBack)
             {
-
+               
                 txtEqID.Text = EquipmentID.ToString();
                 txtEqUn.Text = EquipmentID.ToString();
                 convertIDtoValue(EquipmentID);
                 selectDate(EquipmentID);
             }
 
-
+/*
             if (IsPostBack)
             {
 
                 var SelectedIndex = ddlDates.SelectedIndex;
                 selectDate(EquipmentID, SelectedIndex);
-            }
+            }*/
 
 
 
@@ -52,8 +54,9 @@ namespace Lefarge_FE_App.admin
                 var possibleDates = (from r in conn.Results
                                      where r.Equipment_ID == EquipmentID
                                      select r.Date_Completed).Distinct().ToList();
-
+                currentlySelectedDate = possibleDates[0];
                 getReport(EquipmentID, possibleDates[0]);
+               
 
 
                 ddlDates.DataSource = possibleDates;
@@ -69,7 +72,7 @@ namespace Lefarge_FE_App.admin
                 var possibleDates = (from r in conn.Results
                                      where r.Equipment_ID == EquipmentID
                                      select r.Date_Completed).Distinct().ToList();
-
+                currentlySelectedDate = possibleDates[index];
                 getReport(EquipmentID, possibleDates[index]);
 
 
@@ -95,7 +98,7 @@ namespace Lefarge_FE_App.admin
             {
                 //use link to query the Departments model
                 var result = from r in conn.Results
-                             where r.Equipment_ID == EquipmentID & r.Date_Completed == selectedDate
+                             where r.Equipment_ID == EquipmentID & r.Date_Completed == selectedDate 
                              select r;
                 //bind the query result to the gridview
                 grdResults.DataSource = result.ToList();
@@ -122,34 +125,50 @@ namespace Lefarge_FE_App.admin
                     dr.Cells[0].Text = tempQuestion.Question1;
 
                     var hID = Convert.ToInt32(dr.Cells[4].Text);
-                    var tempDate = ddlDates.SelectedValue;
+                    var tempDate = currentlySelectedDate;
                     var tempHeading = (from h in conn.Headings
                                        where h.Heading_ID == hID
                                        select h).FirstOrDefault();
-                    Button tempButton = new Button();
-                    tempButton.ID = "btnQid=" + qID + "Hid:" + hID;
-                    tempButton.Text = tempHeading.Heading1;
-                    tempButton.Attributes.Add("data-hid", hID.ToString());
-                    tempButton.Attributes.Add("data-date", ddlDates.SelectedValue.ToString());
-                    tempButton.Attributes.Add("data-eqid", txtEqID.Text.ToString());
-                    tempButton.Attributes.Add("onclick", "document.getElementById('" + Button2.ClientID + "').click(); return false;"); 
-                    
-                    
+                    //Button tempButton = new Button();
+                    //tempButton.ID = "btnQid=" + qID + "Hid:" + hID;
+                    //tempButton.Text = tempHeading.Heading1;
+                    //tempButton.Attributes.Add("data-hid", hID.ToString());
+                    //tempButton.Attributes.Add("data-date", ddlDates.SelectedValue.ToString());
+                    //tempButton.Attributes.Add("data-eqid", txtEqID.Text.ToString());
+                    //tempButton.Attributes.Add("onclick", "document.getElementById('" + Button2.ClientID + "').click(); return false;");
+                    //tempButton.Click += new EventHandler(header_click);
+
+
                     Button tempButton2 = new Button();
-                    tempButton2.ID = "btnQid=" + qID + "Hid:" + hID+"2";
-                    tempButton2.Text = "View Images";
-                    tempButton2.Attributes.Add("data-hid", hID.ToString());
-                    tempButton2.Attributes.Add("data-date", ddlDates.SelectedValue.ToString());
-                    tempButton2.Attributes.Add("data-eqid", txtEqID.Text.ToString());
-                    tempButton2.Attributes.Add("data-qid", qID.ToString());
+                    tempButton2.ID = "btnQid=" + qID + "Hid:" + hID;
+                    tempButton2.Text = "View Heading Images";
+
+                    HyperLink hyperlink1 = new HyperLink();
+                    hyperlink1.Attributes.Add("data-role", "button");
+                    hyperlink1.Attributes.Add("data-inline", "true");
+                    hyperlink1.Attributes.Add("rel", "external");
+                    hyperlink1.ID = "hlQid=" + qID + "Hid=" + hID + "2";
+                    hyperlink1.Text = "View Images";
+                    hyperlink1.NavigateUrl = "~/lafargeUser/tempImages.aspx?qid=" + qID + "&Hid=" + hID + "&dc=" + tempDate + "&eqid=" + Convert.ToInt32(Request.QueryString["selectedEquipment"]);
+
+                    HyperLink hyperlink2 = new HyperLink();
+                    hyperlink2.Attributes.Add("data-role", "button");
+                    hyperlink2.Attributes.Add("data-inline", "true");
+                    hyperlink2.Attributes.Add("rel", "external");
+                    hyperlink2.ID = "hlQid=" + qID + "Hid=" + hID;
+                    hyperlink2.Text = "View Heading Images";
+                    hyperlink2.NavigateUrl = "~/lafargeUser/tempImages.aspx?Hid=" + hID + "&dc=" + tempDate + "&eqid=" + Convert.ToInt32(Request.QueryString["selectedEquipment"]);
+
                     //tempButton2.Attributes.Add("onclick", "document.getElementById('" + Button2.ClientID + "').click(); return false;");
 
-                    // tempButton2.Command += header_click;
-                    tempButton2.Attributes.Add("onclick", "header_click()");
-                          
-                    
-                    dr.Cells[4].Controls.Add(tempButton);
-                    dr.Cells[6].Controls.Add(tempButton2);
+
+
+
+
+                    dr.Cells[7].Controls.Add(hyperlink2);
+                    dr.Cells[8].Controls.Add(hyperlink1);
+
+                  
                     
                     var response = dr.Cells[1].Text;
 
@@ -194,7 +213,8 @@ namespace Lefarge_FE_App.admin
             Session["selectedDateIndex"] = ddl.SelectedIndex;
 
             imgMain.ImageUrl = "/admin/surveyImages/mainPics/eqid&" + Request.QueryString["selectedEquipment"].ToString() + "dc_" + (Convert.ToDateTime(ddlDates.SelectedValue)).ToString("MM.dd.yyyy.HH.mm.ss") + "image.jpg";
-
+            
+           
         }
 
         protected void ddlDates_DataBinding(object sender, EventArgs e)
@@ -229,6 +249,11 @@ namespace Lefarge_FE_App.admin
         protected void dlPhotos_ItemCreated(object sender, DataListItemEventArgs e)
         {
 
+        }
+
+        protected void dlPhotos_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+           
         }
     }
 }

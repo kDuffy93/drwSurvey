@@ -51,6 +51,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="GleamTech.FileUltimate, Version=4.5.0.0, Culture=neutral, PublicKeyToken=a05198837413a6d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileUltimate.4.7.4\lib\net40\GleamTech.FileUltimate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Junior.Common">
       <HintPath>..\packages\JuniorCommon.3.8.1\lib\net45\Junior.Common.dll</HintPath>
     </Reference>
@@ -139,6 +143,7 @@
     <Content Include="admin\heading.aspx" />
     <Content Include="admin\headings.aspx" />
     <Content Include="images\lafarge.jpg" />
+    <Content Include="lafargeUser\tempImages.aspx" />
     <Content Include="login.aspx" />
     <Content Include="lafargeUser\logout.aspx" />
     <Content Include="admin\main.aspx" />
@@ -265,6 +270,13 @@
     </Compile>
     <Compile Include="admin\headings.aspx.designer.cs">
       <DependentUpon>headings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lafargeUser\tempImages.aspx.cs">
+      <DependentUpon>tempImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lafargeUser\tempImages.aspx.designer.cs">
+      <DependentUpon>tempImages.aspx</DependentUpon>
     </Compile>
     <Compile Include="logic\RoleActions.cs" />
     <Compile Include="login.aspx.cs">
