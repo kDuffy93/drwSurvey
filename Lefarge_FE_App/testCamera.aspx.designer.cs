@@ -11,14 +11,5 @@ namespace Lefarge_FE_App {
     
     
     public partial class testCamera {
-        
-        /// <summary>
-        /// FileUpload1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Obout.Ajax.UI.FileUpload.FileUpload FileUpload1;
     }
 }
