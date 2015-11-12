@@ -124,7 +124,7 @@ namespace Lefarge_FE_App
         {
             c.Categories_Under = selectedCategoryValues.ToString();
         }
-                catch(NullReferenceException n)
+                catch(NullReferenceException)
         {
             c.Categories_Under = "";
         }

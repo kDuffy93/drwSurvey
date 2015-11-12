@@ -3,7 +3,7 @@
 <asp:DataList runat="server"  ID="DLTempImage" DataKeyField="ID" OnItemDataBound="DLTempImage_ItemDataBound">
     <ItemTemplate>
        Images:
-        <asp:Image  runat="server" ID="imageContainer" ImageUrl='<%# "/admin/" + Eval("URL") %>' Height="300" Width="300"/>
+        <asp:Image  runat="server" ID="imageContainer" ImageUrl='<%# "/admin/" + Eval("URL") %>' Height="500" Width="500"/>
                
     </ItemTemplate>
 </asp:DataList>

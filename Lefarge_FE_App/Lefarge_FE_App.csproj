@@ -169,6 +169,7 @@
     <Content Include="Models\drwdata.edmx.diagram">
       <DependentUpon>drwdata.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\drwsurvey.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
